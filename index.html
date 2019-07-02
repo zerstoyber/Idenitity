@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Identität</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" href="identity.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script class="javascript" src="nouislider.js"></script>
+    <link rel="stylesheet" href="nouislider.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+      <div id="p5_loading" class="loading">
+        <div class="margin">
+          <div class="loadingtext">
+            <h1>Identitätsblase wird geladen!</h1>
+            <p class="loadingabstract">Innerhalb der modernen bürgerlichen Gesellschaft versucht <span class="gx">Identität</span> etwas eindeutig Definierbares zu beschreiben. Zur Kategorisierung werden psychologische und soziologische Identitätsmuster verwendet. Die daraus resultierende Einordnung in stereotype Identitätsgruppen, vermitteln allerdings nur ein oberflächliches Bild der Mitmenschen. <br>
+              <br>Ich möchte in dieser Studienarbeit versuchen, Menschen zu animieren, sich mit ihrer eigenen <span class="gx">Identität</span> auseinander zu setzen. Ich möchte ihnen die Möglichkeit anbieten, sich selbst zu befragen und dabei in unterschiedliche Positionen/Blickwinkel zu schlüpfen.
+            </p>
+            <button class="curserInfo" onclick="location.href='info.html'">mehr Informationen zur Arbeit</button>
+            <p class="loadinginfo">Vorsicht diese Webseite greift auf Daten ihres Browsers zurück und benutzt viel JavaScript Code. Dementsprechend könnte ihr Device etwas heiss und langsam werden!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aktion">
+          <button id="frau" class="curserButton" onclick="sFrau()">Frau</button>
+          <button id="mann" class="curserButton" onclick="sMann()">Mann</button>
+          <button id="trans" class="curserButton" onclick="sTrans()">Trans*</button>
+          <button>Name: <input id="fill" type="text"></button>
+          <button id="jung" class="curserButton" onclick="sJung()">jung</button>
+          <button id="mittleresAlter" class="curserButton" onclick="sMittleresAlter()">mittleres Alter</button>
+          <button id="alt" class="curserButton" onclick="sAlt()">alt</button>
+          <button id="datum" class="gx"></button>
+          <button id="zeit" class="gx"></button>
+          <button class="curserButton"><div id="sliderBubbleSize" class="slide"></div>klein/groß</button>
+          <button><input id="fill" type="text"></button>
+          <button>untergewichtig(?!)</button>
+          <button>normalgewicht(?!)</button>
+          <button>übergewicht(?!)</button>
+          <button id="einzelkind" class="curserButton" onclick="sEinzelkind()">einzelkind</button>
+          <button id="geschwisterkind" class="curserButton" onclick="sGeschwisterkind()">geschwisterkind</button>
+          <button id="waisenkind" class="curserButton" onclick="sWaisenkind()">Waisenkind</button>
+          <button id="scheidungskind" class="curserButton" onclick="sScheindungskind()">Scheidungskind</button>
+          <button><input id="fill4" type="text"></button>
+          <button id="akademikerkind" class="curserButton" onclick="sAkademikerKind()">Akademikerkind</button>
+          <button>Beamtenkind(?!)</button>
+          <button id="arbeiterkind" class="curserButton" onclick="sArbeiterkind()">Arbeiterkind</button>
+          <button id="bauernkind" class="curserButton" onclick="sBauernkind()">Bauernkind</button>
+          <button><input id="fill" type="text"></button>
+          <button id="verheiratet" class="curserButton" onclick="sVerheiratet()">verheiratet</button>
+          <button>ledig(?!)</button>
+          <button id="verwitwet" class="curserButton" onclick="sVerwitwet()">verwitwet</button>
+          <button id="geschieden" class="curserButton" onclick="sGeschieden()">geschieden</button>
+          <button><input id="fill2" type="text"></button>
+          <button id="schwanger" class="curserButton" onclick="sSchwanger()">schwanger</button>
+          <button>alleinerziehend(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button class="curserButton"><div id="sliderFarbeEins" class="slide"></div>kalt/warm</button>
+          <button id="weather" class="gx"></button>
+          <button id="temp" class="gx"></button>
+          <button><input id="fill3" type="text"></button>
+          <button>hetero(?!)</button>
+          <button>homosexuell(?!)</button>
+          <button>bisexuell(?!)</button>
+          <button>asexuell(?!)</button>
+          <button>Nr. der Sexualpartner*innen: <input id="fill5" type="text"></button>
+          <button>beziehungsunfähig(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>Hindu(?!)</button>
+          <button>Buddhist*in(?!)</button>
+          <button>Jude/Jüdin(?!)</button>
+          <button>Christ*in(?!)</button>
+          <button>Muslim*a(?!)</button>
+          <button>Bahai(?!)</button>
+          <button>Atheist*in(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button class="curserButton"><div id="sliderBubbleSpread" class="slide"></div>sozial/isoliert</button>
+          <button id="doerflich" class="curserButton" onclick="sDoerflich()">doerflich</button>
+          <button id="staedtisch" class="curserButton" onclick="sStaedtisch()">städtisch</button>
+          <button><input id="fill" type="text"></button>
+          <button>westdeutsch(?!)</button>
+          <button>ostdeutsch(?!)</button>
+          <button>norddeutsch(?!)</button>
+          <button>süddeutsch(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button id="saechsisch" class="curserButton" onclick="sSaechsisch()">sächsisch</button>
+          <button id="schwaebisch" class="curserButton" onclick="sSchwaebisch()">schwaebisch</button>
+          <button id="hessisch" class="curserButton" onclick="sHessisch()">hessisch</button>
+          <button id="koelsch" class="curserButton" onclick="sKoelsch()">kölsch</button>
+          <button id="bayerisch" class="curserButton" onclick="sBayerisch()">bayerisch</button>
+          <button id="berlinerisch" class="curserButton" onclick="sBerlinerisch()">berlinerisch</button>
+          <button class="curserButton"><div id="sliderFarbeZwei" class="slide"></div>pessimistisch/optimistisch</button>
+          <button><input id="fill4" class="curserButton" type="text"></button>
+          <button id="asien" class="curserButton" onclick="sAsien()">Asien</button>
+          <button id="afrika" class="curserButton" onclick="sAfrika()">Afrika</button>
+          <button id="antark" class="curserButton" onclick="sAntark()">Antarktis</button>
+          <button id="austra" class="curserButton" onclick="sAustra()">Australien</button>
+          <button id="sued" class="curserButton" onclick="sSued()">Südamerika</button>
+          <button id="nord" class="curserButton" onclick="sNord()">Nordamerika</button>
+          <button id="euro" class="curserButton" onclick="sEuro()">Europa</button>
+          <button><input id="fill" type="text"></button>
+          <button>schwarz(?!)</button>
+          <button>weiss(?!)</button>
+          <button>rot(?!)</button>
+          <button>gelb(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>braunäugig(?!)</button>
+          <button>grünäugig(?!)</button>
+          <button>grünäugig(?!)</button>
+          <button>blauäugig(?!)</button>
+          <button>grauäugig(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button>Hauptschüler*in(?!)</button>
+          <button>Realschüler*in(?!)</button>
+          <button>Abiturient*in(?!)</button>
+          <button>Jahre in der Schule: <input id="fill5" type="text"></button>
+          <button id="akademiker" class="curserButton" onclick="sAkademiker()">Akademiker*in</button>
+          <button>Dokor*in(?!)</button>
+          <button>Studierte Semester: <input id="fill5" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button>Wehrdienstleistende*r(?!)</button>
+          <button>Zivieldienstleistend*r(?!)</button>
+          <button>ausgemustert(?!)</button>
+          <button>Schüler*in(?!)</button>
+          <button>Auszubildende*r(?!)</button>
+          <button>Student*in(?!)</button>
+          <button>Meister*in(?!)</button>
+          <button>Freiberufler*in(?!)</button>
+          <button>Sportverein(?!)</button>
+
+          <button>Studentenverbindung(?!)</button>
+          <button><input id="fill3" type="text"></button>
+
+          <button>berufstätig(?!)</button>
+          <button>arbeitslos(?!)</button>
+          <button>Straftäter*in(?!)</button>
+          <button>Anzahl der Anzeigen: <input id="fill5" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button id="ober" class="curserButton" onclick="sOber()">Oberschicht</button>
+          <button id="mitte" class="curserButton" onclick="sMitte()">Mittelschicht</button>
+          <button id="unten" class="curserButton" onclick="sUnten()">Unterschicht</button>
+          <button>vermögend(?!)</button>
+          <button>arm(?!)</button>
+          <button>Kontostand: <input id="fill" type="text"></button>
+          <button><input id="fill4" type="text"></button>
+          <button id="location" class="gx"></button>
+          <button>Straße: <input id="fill2" type="text"></button>
+          <button>Mieter*in(?!)</button>
+          <button>Vermieter*in(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>Steuerliche IdentifikationsNr.: <input id="fill" type="text"></button>
+          <button>Steuerzahler*in</button>
+          <button><input id="fill4" type="text"></button>
+          <button id="pendler" class="curserButton" onclick="sPendler()">Pendler*in</button>
+          <button id="radfahrer" class="curserButton" onclick="sRadfahrer()">Radfahrer*in</button>
+          <button id="autofahrer" class="curserButton" onclick="sAutofahrer()">Autofahrer*in</button>
+          <button><input id="fill" type="text"></button>
+          <button id="zugfahrer" class="curserButton" onclick="sZugfahrer()">Zugfahrer*in</button>
+          <button id="bus" class="curserButton" onclick="sBus()">Busfahrer*in</button>
+          <button id="fussgaenger" class="curserButton" onclick="sFussgaenger()">Fussgaenger*in</button>
+          <button>Viel Flieger*in(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button class="curserButton"><div id="sliderPan" class="slide"></div>links/rechts</button>
+          <button id="rechts" class="curserButton" onclick="sRechts()">national</button>
+          <button>antifaschistisch(?!)</button>
+          <button>liberal(?!)</button>
+          <button>grün(?!)</button>
+          <button>neutral(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button>modebewusst(?!)</button>
+          <button>alternativ(?!)</button>
+          <button>seriös(?!)</button>
+          <button>alltagstauglich(?!)</button>
+          <button>sportlich(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>schwarzhaarig(?!)</button>
+          <button>grauhaarig(?!)</button>
+          <button>blond(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button>braunhaarig(?!)</button>
+          <button>bunthaarig(?!)</button>
+          <button>kurzhaarig(?!)</button>
+          <button>langhaarig(?!)</button>
+          <button>haarlos(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>lockig(?!)</button>
+          <button>glatt(?!)</button>
+          <button>grausig(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button id="tattoo" class="curserButton" onclick="sTattoo()">tattowiert</button>
+          <button><input id="fill2" type="text"></button>
+          <button>Rocker*in(?!)</button>
+          <button>Raver*in(?!)</button>
+          <button>Popper*in(?!)</button>
+          <button>Jazzer*in(?!)</button>
+          <button>Volksmusiker*in(?!)</button>
+          <button>Latina/Latino(?!)</button>
+          <button>Klassiker*in(?!)</button>
+          <button>Experimental Fan(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button class="curserButton"><div id="sliderVol" class="slide"></div>leise/laut</button>
+          <button><input id="fill2" type="text"></button>
+          <button>Veganer*in(?!)</button>
+          <button>Vegetarier*in(?!)</button>
+          <button>Fleischesser*in(?!)</button>
+          <button>Felxitarier*in(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>trainiert(?!)</button>
+          <button class="curserButton"><div id="sliderBubbleWidth" class="slide"></div>normal/breit</button>
+          <button><input id="fill" type="text"></button>
+          <button>kreativ(?!)</button>
+          <button class="curserButton"><div id="sliderFarbeDrei" class="slide"></div>künstlich/natürlich</button>
+          <button>fokkusiert(?!)</button>
+          <button class="curserButton"><div id="sliderDelayAmp" class="slide"></div>nüchtern/berauscht</button>
+          <button><input id="fill" type="text"></button>
+          <button>krank(?!)</button>
+          <button>chronisch krank(?!)</button>
+          <button class="curserButton"><div id="sliderBubbleHeight" class="slide"></div>normal/schmal</button>
+          <button><input id="fill" type="text"></button>
+          <button>gesund(?!)</button>
+          <button>körperlich behindert(?!)</button>
+          <button>geistig behindert(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>krankenversichert(?!)</button>
+          <button>nicht versichert(?!)</button>
+          <button>privat versichert(?!)</button>
+          <button>gesetzlich versichert(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button id="allergiker" class="curserButton" onclick="sAllergiker()">Allergiker*in</button>
+          <button><input id="fill2" type="text"></button>
+          <button>Frühaufsteher*in(?!)</button>
+          <button>Langschläfer*in(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>Alkoholiker*in(?!)</button>
+          <button>Raucher*in(?!)</button>
+          <button>Drogenabhängige*r(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button class="curserButton"><div id="sliderBubbleAngle" class="slide"></div>unsortiert/sortiert</button>
+          <button><input id="fill2" type="text"></button>
+          <button>neugierig(?!)</button>
+          <button>enthusiastisch(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>Geburtsjahr: <input id="fill" type="text"></button>
+          <button>Wassermann(?!)</button>
+          <button>Fisch(?!)</button>
+          <button>Widder(?!)</button>
+          <button>Stier(?!)</button>
+          <button>Zwilling(?!)</button>
+          <button>Krebs(?!)</button>
+          <button>Skorpion(?!)</button>
+          <button>Schütze(?!)</button>
+          <button>Steinbock(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>esotherisch(?!)</button>
+          <button>freundlich(?!)</button>
+          <button>besorgt(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button>Extremsportler*in(?!)</button>
+          <button>Gamer*in(?!)</button>
+          <button>Bücherwurm(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button>Linux(?!)</button>
+          <button>Windows(?!)</button>
+          <button>MaxOSX(?!)</button>
+          <button>Passwort: <input id="fill" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button>eMail: <input id="fill" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button id="browser" class="gx"></button>
+          <button><input id="fill2" type="text"></button>
+          <button>Mobilfunkvertrag: <input id="fill" type="text"></button>
+          <button>TelefonNr.: <input id="fill" type="text"></button>
+          <button><input id="fill5" type="text"></button>
+          <button>Schufa Score: <input id="fill" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button>Puma(?!)</button>
+          <button>Adidas(?!)</button>
+          <button>Nike(?!)</button>
+          <button>Red Bull(?!)</button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button class="curserButton"><div id="sliderBubbleRotate" class="slide"></div>gerade/schief</button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button>Mercedes-Benz(?!)</button>
+          <button>Opel(?!)</button>
+          <button>BMW(?!)</button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill5" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button>Politiker*in(?!)</button>
+          <button>Star(?!)</button>
+          <button><input id="fill" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button>Schufa Score: <input id="fill" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill4" type="text"></button>
+          <button>Waffenbesitzer*in(?!)</button>
+          <button><input id="fill4" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill5" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button>Facebook(?!)</button>
+          <button>Twitter(?!)</button>
+          <button>Instagram(?!)</button>
+          <button>Usename: <input id="fill" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button><input id="fill5" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button class="curserButton"><div id="sliderSpeed" class="slide"></div>gemütlich/schnell</button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button>Mülltrenner*in(?!)</button>
+          <button><input id="fill4" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill" type="text"></button>
+          <button><input id="fill3" type="text"></button>
+          <button><input id="fill5" type="text"></button>
+          <div class="space"></div>
+          <button class="curserInfo" onclick="location.href='info.html'">Informationen zur Arbeit</button>
+          <div class="minispace"></div>
+          <p>Diese Liste hat keinen Anspruch auf Vollständigkeit!</p>
+          <p>Jacob Stoy, 2019 | Studiengruppe Informationsdesign | Burg Giebichstein Kunsthochschule Halle</p>
+      </div>
+
+    <script class="javascript" src="identity.js"></script>
+    <script>
+    ////DATUM
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+      document.getElementById("datum").innerHTML = dd + '.' + mm + '.' + yyyy;
+
+    ////ZEIT
+    var zeitInterval = setInterval(myTimer, 50);
+    function myTimer() { var d = new Date();
+      document.getElementById("zeit").innerHTML = d.toLocaleTimeString() + '  '; }
+
+    ////BROWSER
+    navigator.sayswho= (function(){
+      var ua= navigator.userAgent, tem, M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+      if(/trident/i.test(M[1])){ tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+      return 'IE '+(tem[1] || ''); }
+      if(M[1]=== 'Chrome'){ tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera'); }
+        M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+        if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
+      })();
+
+    var browserInterval = setInterval(showBrowser, 50);
+    var y = document.getElementById("browser");
+    function showBrowser() { y.innerHTML= navigator.sayswho + '  '; }
+
+    ////WETTER & ORT
+    var x = document.getElementById("location");
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser."); }
+    }
+
+    function showPosition(position){
+      var api = 'https://fcc-weather-api.glitch.me/api/current?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude;
+      $.getJSON(api, function(data){
+        // Getting Weather Details
+        $("#location").html(data.name + ", " + data.sys.country);
+        $("#weather").html(data.weather[0].main);
+        $("#temp").html(data.main.temp + "°C");
+      });
+    }
+    getLocation();
+    </script>
+  </body>
+</html>
