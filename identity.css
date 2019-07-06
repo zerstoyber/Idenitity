@@ -9,6 +9,12 @@
   100%  {font-variation-settings: 'wght' 100;}
 }
 
+@keyframes alpha {
+  0%    {color: rgba(255,255,255,0.9);}
+  50%   {color: rgba(255,255,255,0.0);}
+  100%  {color: rgba(255,255,255,0.9);}
+}
+
 body {
   font-family: ArialMod;
   font-weight: 100;
@@ -22,6 +28,22 @@ body {
 body a {
   color: white;
   cursor: pointer;
+}
+
+#timer {
+  font-size: 0.6em;
+  position: fixed;
+  z-index: -1;
+  color: rgba(255,255,255,0.9);
+  background-color: rgba(0,0,0,0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  animation-name: alpha;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
 }
 
 #fragen {

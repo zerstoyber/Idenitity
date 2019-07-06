@@ -22,15 +22,17 @@
       <div id="p5_loading" class="loading">
         <div class="margin">
           <div class="loadingtext">
-            <h1>Identitätsblase wird geladen!</h1>
-            <p class="loadingabstract">Innerhalb der modernen bürgerlichen Gesellschaft versucht <span class="gx">Identität</span> etwas eindeutig Definierbares zu beschreiben. Zur Kategorisierung werden psychologische und soziologische Identitätsmuster verwendet. Die daraus resultierende Einordnung in stereotype Identitätsgruppen, vermitteln allerdings nur ein oberflächliches Bild der Mitmenschen. <br>
-              <br>Ich möchte in dieser Studienarbeit versuchen, Menschen zu animieren, sich mit ihrer eigenen <span class="gx">Identität</span> auseinander zu setzen. Ich möchte ihnen die Möglichkeit anbieten, sich selbst zu befragen und dabei in unterschiedliche Positionen/Blickwinkel zu schlüpfen.
+            <h1>Bitte warten …</h1>
+            <p class="loadingabstract">
+                Innerhalb der modernen bürgerlichen Gesellschaft versucht <span class="gx">Identität</span> etwas eindeutig Definierbares zu beschreiben. Zur Kategorisierung werden psychologische und soziologische Identitätsmuster verwendet. Die daraus resultierende Einordnung in stereotype Identitätsgruppen, vermitteln allerdings nur ein oberflächliches Bild der Mitmenschen. In der Studienarbeit soll verdeutlicht werden, dass sich der Identitätsbegriff in ständiger Veränderung befindet. Soziale Einflüsse und Veränderungen zwingen den Menschen, sich ständig mit seiner Identität – ob nun bewußt oder unbewußt – auseinander zu setzen. Durch Fieldrecordings und Audioauszügen aus Dokumentation, wird über eine Webseite ein Mikrokosmos einer menschlichen Identität zusammengeklickt. Klänge vermischen sich, erzeugen etwas Neues, werden in der Masse diffus, so dass man zum Strukturieren gezwungen wird, um es für sich selbst wieder verständlicher zu machen und eine Essenz herauskristallisieren zu können.
             </p>
-            <button class="curserInfo" onclick="location.href='info.html'">mehr Informationen zur Arbeit</button>
+            <button class="curserInfo" onclick="location.href='info.html'">Informationen</button>
             <p class="loadinginfo">Vorsicht diese Webseite greift auf Daten ihres Browsers zurück und benutzt viel JavaScript Code. Dementsprechend könnte ihr Device etwas heiss und langsam werden!</p>
           </div>
         </div>
       </div>
+
+      <div id="timer" class="gx"></div>
 
       <div class="aktion">
           <button id="frau" class="curserButton" onclick="sFrau()">Frau</button>
@@ -44,54 +46,50 @@
           <button id="zeit" class="gx"></button>
           <button class="curserButton"><div id="sliderBubbleSize" class="slide"></div>klein/groß</button>
           <button><input id="fill" type="text"></button>
-          <button>untergewichtig(?!)</button>
-          <button>normalgewicht(?!)</button>
-          <button>übergewicht(?!)</button>
+          <button id="uebergewicht" class="curserButton" onclick="sUebergewicht()">übergewicht</button>
+          <button id="untergewicht" class="curserButton" onclick="sUntergewicht()">untergewichtig</button>
           <button id="einzelkind" class="curserButton" onclick="sEinzelkind()">einzelkind</button>
           <button id="geschwisterkind" class="curserButton" onclick="sGeschwisterkind()">geschwisterkind</button>
           <button id="waisenkind" class="curserButton" onclick="sWaisenkind()">Waisenkind</button>
           <button id="scheidungskind" class="curserButton" onclick="sScheindungskind()">Scheidungskind</button>
           <button><input id="fill4" type="text"></button>
           <button id="akademikerkind" class="curserButton" onclick="sAkademikerKind()">Akademikerkind</button>
-          <button>Beamtenkind(?!)</button>
+          <button id="beamtenkind" class="curserButton" onclick="sBeamtenkind()">Beamtenkind</button>
           <button id="arbeiterkind" class="curserButton" onclick="sArbeiterkind()">Arbeiterkind</button>
           <button id="bauernkind" class="curserButton" onclick="sBauernkind()">Bauernkind</button>
           <button><input id="fill" type="text"></button>
           <button id="verheiratet" class="curserButton" onclick="sVerheiratet()">verheiratet</button>
-          <button>ledig(?!)</button>
+          <button id="ledig" class="curserButton" onclick="sLedig()">ledig</button>
           <button id="verwitwet" class="curserButton" onclick="sVerwitwet()">verwitwet</button>
           <button id="geschieden" class="curserButton" onclick="sGeschieden()">geschieden</button>
           <button><input id="fill2" type="text"></button>
           <button id="schwanger" class="curserButton" onclick="sSchwanger()">schwanger</button>
-          <button>alleinerziehend(?!)</button>
+          <button id="alleinerziehend" class="curserButton" onclick="sAlleinerziehend()">alleinerziehend</button>
           <button><input id="fill" type="text"></button>
           <button class="curserButton"><div id="sliderFarbeEins" class="slide"></div>kalt/warm</button>
           <button id="weather" class="gx"></button>
           <button id="temp" class="gx"></button>
           <button><input id="fill3" type="text"></button>
-          <button>hetero(?!)</button>
-          <button>homosexuell(?!)</button>
-          <button>bisexuell(?!)</button>
-          <button>asexuell(?!)</button>
+          <button id="hetero" class="curserButton" onclick="sHetero()">hetero</button>
+          <button id="homo" class="curserButton" onclick="sHomo()">homosexuell</button>
+          <button id="bisex" class="curserButton" onclick="sBisex()">bisexuell</button>
+          <button id="asex" class="curserButton" onclick="sAsex()">asexuell</button>
           <button>Nr. der Sexualpartner*innen: <input id="fill5" type="text"></button>
-          <button>beziehungsunfähig(?!)</button>
           <button><input id="fill" type="text"></button>
-          <button>Hindu(?!)</button>
-          <button>Buddhist*in(?!)</button>
-          <button>Jude/Jüdin(?!)</button>
-          <button>Christ*in(?!)</button>
-          <button>Muslim*a(?!)</button>
-          <button>Bahai(?!)</button>
-          <button>Atheist*in(?!)</button>
+          <button id="hindu" class="curserButton" onclick="sHindu()">Hindu</button>
+          <button id="buddhist" class="curserButton" onclick="sBuddhist()">Buddhist*in</button>
+          <button id="jude" class="curserButton" onclick="sJude()">Jude/Jüdin</button>
+          <button id="christ" class="curserButton" onclick="sChrist()">Christ*in</button>
+          <button id="muslim" class="curserButton" onclick="sMuslim()">Muslim*a</button>
+          <button id="bahai" class="curserButton" onclick="sBahai()">Bahai</button>
+          <button id="atheist" class="curserButton" onclick="sAtheist()">Atheist*in</button>
           <button><input id="fill2" type="text"></button>
           <button class="curserButton"><div id="sliderBubbleSpread" class="slide"></div>sozial/isoliert</button>
           <button id="doerflich" class="curserButton" onclick="sDoerflich()">doerflich</button>
           <button id="staedtisch" class="curserButton" onclick="sStaedtisch()">städtisch</button>
           <button><input id="fill" type="text"></button>
-          <button>westdeutsch(?!)</button>
-          <button>ostdeutsch(?!)</button>
-          <button>norddeutsch(?!)</button>
-          <button>süddeutsch(?!)</button>
+          <button id="westdeutsch" class="curserButton" onclick="sWestdeutsch()">westdeutsch</button>
+          <button id="ostdeutsch" class="curserButton" onclick="sOstdeutsch()">ostdeutsch</button>
           <button><input id="fill" type="text"></button>
           <button id="saechsisch" class="curserButton" onclick="sSaechsisch()">sächsisch</button>
           <button id="schwaebisch" class="curserButton" onclick="sSchwaebisch()">schwaebisch</button>
@@ -109,57 +107,64 @@
           <button id="nord" class="curserButton" onclick="sNord()">Nordamerika</button>
           <button id="euro" class="curserButton" onclick="sEuro()">Europa</button>
           <button><input id="fill" type="text"></button>
-          <button>schwarz(?!)</button>
-          <button>weiss(?!)</button>
-          <button>rot(?!)</button>
-          <button>gelb(?!)</button>
+          <button id="schwarz" class="curserButton" onclick="sSchwarz()">schwarz</button>
+          <button id="weiss" class="curserButton" onclick="sWeiss()">weiss</button>
+          <button id="rot" class="curserButton" onclick="sRot()">rot</button>
+          <button id="gelb" class="curserButton" onclick="sGelb()">gelb</button>
           <button><input id="fill" type="text"></button>
-          <button>braunäugig(?!)</button>
-          <button>grünäugig(?!)</button>
-          <button>grünäugig(?!)</button>
-          <button>blauäugig(?!)</button>
-          <button>grauäugig(?!)</button>
+          <button id="augenbraun" class="curserButton" onclick="sAugenbraun()">braune Augen</button>
+          <button id="augenhaselnussbraun" class="curserButton" onclick="sAugenhaselnussbraun()">haselnussbraune Augen</button>
+          <button id="augengruen" class="curserButton" onclick="sAugengruen()">grüne Augen</button>
+          <button id="augenblau" class="curserButton" onclick="sAugenblau()">blaue Augen</button>
+          <button id="augenschwarz" class="curserButton" onclick="sAugenschwarz()">schwarze Augen</button>
           <button><input id="fill2" type="text"></button>
-          <button>Hauptschüler*in(?!)</button>
-          <button>Realschüler*in(?!)</button>
-          <button>Abiturient*in(?!)</button>
+          <button id="schule1" class="curserButton" onclick="sSchule1()">Hauptschule</button>
+          <button id="schule2" class="curserButton" onclick="sSchule2()">Realschule</button>
+          <button id="schule3" class="curserButton" onclick="sSchule3()">Gymnasium</button>
           <button>Jahre in der Schule: <input id="fill5" type="text"></button>
-          <button id="akademiker" class="curserButton" onclick="sAkademiker()">Akademiker*in</button>
-          <button>Dokor*in(?!)</button>
+          <button id="ausbildung" class="curserButton" onclick="sAusbildung()">Ausbildung</button>
+
+          <button id="bundeswehr" class="curserButton" onclick="sBundeswehr()">Wehrdienst</button>
+          <button id="zivi" class="curserButton" onclick="sZivi()">Zivieldienst</button>
+          <button id="ausgemuster" class="curserButton" onclick="sAusgemuster()">ausgemustert</button>
+          <button><input id="fill" type="text"></button>
+
+          <button id="meister" class="curserButton" onclick="sMeister()">Meister*in</button>
+          <button><input id="fill3" type="text"></button>
+          <button id="akademiker" class="curserButton" onclick="sAkademiker()">Hochschule/Univeristät</button>
           <button>Studierte Semester: <input id="fill5" type="text"></button>
           <button><input id="fill" type="text"></button>
-          <button>Wehrdienstleistende*r(?!)</button>
-          <button>Zivieldienstleistend*r(?!)</button>
-          <button>ausgemustert(?!)</button>
-          <button>Schüler*in(?!)</button>
-          <button>Auszubildende*r(?!)</button>
-          <button>Student*in(?!)</button>
-          <button>Meister*in(?!)</button>
-          <button>Freiberufler*in(?!)</button>
-          <button>Sportverein(?!)</button>
-
-          <button>Studentenverbindung(?!)</button>
+          <button id="promoviert" class="curserButton" onclick="sPromoviert()">promoviert</button>
           <button><input id="fill3" type="text"></button>
+          <button><input id="fill2" type="text"></button>
+          <button><input id="fill5" type="text"></button>
 
-          <button>berufstätig(?!)</button>
-          <button>arbeitslos(?!)</button>
-          <button>Straftäter*in(?!)</button>
-          <button>Anzahl der Anzeigen: <input id="fill5" type="text"></button>
-          <button><input id="fill" type="text"></button>
+          <button id="buero" class="curserButton" onclick="sBuero()">berufstätig</button>
+          <button id="arbeitslos" class="curserButton" onclick="sArbeitslos()">arbeitslos</button>
+          <button id="freiberufler" class="curserButton" onclick="sFreiberufler()">Freiberufler*in</button>
+          <button id="angestellte" class="curserButton" onclick="sAngestellte()">Arbeiter*in/Angestellte*r</button>
+          <button id="geschaeftsfuehrer" class="curserButton" onclick="sGeschaeftsfuehrer()">Geschäftsführer*in</button>
+          <button><input id="fill4" type="text"></button>
+
           <button id="ober" class="curserButton" onclick="sOber()">Oberschicht</button>
           <button id="mitte" class="curserButton" onclick="sMitte()">Mittelschicht</button>
           <button id="unten" class="curserButton" onclick="sUnten()">Unterschicht</button>
-          <button>vermögend(?!)</button>
-          <button>arm(?!)</button>
           <button>Kontostand: <input id="fill" type="text"></button>
           <button><input id="fill4" type="text"></button>
+
+          <button id="straftaeter" class="curserButton" onclick="sStraftaeter()">Straftäter*in</button>
+          <button>Anzahl der Anzeigen: <input id="fill5" type="text"></button>
+          <button><input id="fill" type="text"></button>
+
           <button id="location" class="gx"></button>
           <button>Straße: <input id="fill2" type="text"></button>
-          <button>Mieter*in(?!)</button>
-          <button>Vermieter*in(?!)</button>
+          <button id="mieter" class="curserButton" onclick="sMieter()">Mieter*in</button>
+          <button id="vermieter" class="curserButton" onclick="sVermieter()">Vermieter*in</button>
           <button><input id="fill" type="text"></button>
+
+          <button id="steuer" class="curserButton" onclick="sSteuer()">Steuerzahler*in</button>
           <button>Steuerliche IdentifikationsNr.: <input id="fill" type="text"></button>
-          <button>Steuerzahler*in</button>
+
           <button><input id="fill4" type="text"></button>
           <button id="pendler" class="curserButton" onclick="sPendler()">Pendler*in</button>
           <button id="radfahrer" class="curserButton" onclick="sRadfahrer()">Radfahrer*in</button>
@@ -168,111 +173,135 @@
           <button id="zugfahrer" class="curserButton" onclick="sZugfahrer()">Zugfahrer*in</button>
           <button id="bus" class="curserButton" onclick="sBus()">Busfahrer*in</button>
           <button id="fussgaenger" class="curserButton" onclick="sFussgaenger()">Fussgaenger*in</button>
-          <button>Viel Flieger*in(?!)</button>
+          <button id="vielflieger" class="curserButton" onclick="sVielflieger()">Vielflieger*in</button>
           <button><input id="fill2" type="text"></button>
+
           <button class="curserButton"><div id="sliderPan" class="slide"></div>links/rechts</button>
-          <button id="rechts" class="curserButton" onclick="sRechts()">national</button>
-          <button>antifaschistisch(?!)</button>
-          <button>liberal(?!)</button>
-          <button>grün(?!)</button>
-          <button>neutral(?!)</button>
+          <button id="national" class="curserButton" onclick="sNational()">national</button>
+          <button id="antifa" class="curserButton" onclick="sAntifa()">antifaschistisch</button>
+          <button id="liberal" class="curserButton" onclick="sLiberal()">liberal</button>
+          <button id="gruen" class="curserButton" onclick="sGruen()">grün</button>
           <button><input id="fill2" type="text"></button>
-          <button>modebewusst(?!)</button>
-          <button>alternativ(?!)</button>
-          <button>seriös(?!)</button>
-          <button>alltagstauglich(?!)</button>
-          <button>sportlich(?!)</button>
+
+          <button id="modebewusst" class="curserButton" onclick="sModebewusst()">modebewusst</button>
+          <button id="alternativ" class="curserButton" onclick="sAlternativ()">alternativ</button>
+          <button id="serioes" class="curserButton" onclick="sSerioes()">seriös</button>
+          <button id="arbeitskleidung" class="curserButton" onclick="sArbeitskleidung()">alltagstauglich</button>
+          <button id="sport" class="curserButton" onclick="sSport()">sportlich</button>
           <button><input id="fill" type="text"></button>
-          <button>schwarzhaarig(?!)</button>
-          <button>grauhaarig(?!)</button>
-          <button>blond(?!)</button>
-          <button><input id="fill2" type="text"></button>
-          <button>braunhaarig(?!)</button>
-          <button>bunthaarig(?!)</button>
-          <button>kurzhaarig(?!)</button>
-          <button>langhaarig(?!)</button>
-          <button>haarlos(?!)</button>
+
+          <button  id="kurzehaare" class="curserButton" onclick="sKurzehaare()">kurzhaarig</button>
+          <button id="langehaare" class="curserButton" onclick="sLangehaare()">langhaarig</button>
+          <button>Haarfarbe: <input id="fill2" type="text"></button>
+
+          <button id="glatze" class="curserButton" onclick="sGlatze()">haarlos</button>
+
           <button><input id="fill" type="text"></button>
-          <button>lockig(?!)</button>
-          <button>glatt(?!)</button>
-          <button>grausig(?!)</button>
+          <button>Haartyp: <input id="fill2" type="text"></button>
+
           <button><input id="fill" type="text"></button>
+
           <button id="tattoo" class="curserButton" onclick="sTattoo()">tattowiert</button>
+          <button id="op" class="curserButton" onclick="sOp()">operiert</button>
+
           <button><input id="fill2" type="text"></button>
-          <button>Rocker*in(?!)</button>
-          <button>Raver*in(?!)</button>
-          <button>Popper*in(?!)</button>
-          <button>Jazzer*in(?!)</button>
-          <button>Volksmusiker*in(?!)</button>
-          <button>Latina/Latino(?!)</button>
-          <button>Klassiker*in(?!)</button>
-          <button>Experimental Fan(?!)</button>
+
+          <button id="rock" class="curserButton" onclick="sRock()">Rocker*in</button>
+          <button id="rave" class="curserButton" onclick="sRave()">Raver*in</button>
+          <button id="pop" class="curserButton" onclick="sPop()">Popper*in</button>
+          <button id="jazz" class="curserButton" onclick="sJazz()">Jazzer*in(!)</button>
+          <button id="volksmusik" class="curserButton" onclick="sVolksmusik()">Volksmusiker*in</button>
+          <button id="latin" class="curserButton" onclick="sLatin()">Latina/Latino</button>
+          <button id="classic" class="curserButton" onclick="sClassic()">Klassiker*in</button>
+          <button  id="experimental" class="curserButton" onclick="sExperimental()">Experimental Fan</button>
           <button><input id="fill" type="text"></button>
+
           <button class="curserButton"><div id="sliderVol" class="slide"></div>leise/laut</button>
           <button><input id="fill2" type="text"></button>
-          <button>Veganer*in(?!)</button>
-          <button>Vegetarier*in(?!)</button>
-          <button>Fleischesser*in(?!)</button>
-          <button>Felxitarier*in(?!)</button>
+
+          <button id="veganer" class="curserButton" onclick="sVeganer()">Veganer*in</button>
+          <button id="vegetarisch" class="curserButton" onclick="sVegetarisch()">Vegetarier*in</button>
+          <button id="fleischfresser" class="curserButton" onclick="sFleischfresser()">Fleischesser*in</button>
           <button><input id="fill" type="text"></button>
-          <button>trainiert(?!)</button>
-          <button class="curserButton"><div id="sliderBubbleWidth" class="slide"></div>normal/breit</button>
-          <button><input id="fill" type="text"></button>
-          <button>kreativ(?!)</button>
+
+          <button>aktuelle Stimmung: <input id="fill" type="text"></button>
+          <button id="kreativ" class="curserButton" onclick="sKreativ()">kreativ</button>
           <button class="curserButton"><div id="sliderFarbeDrei" class="slide"></div>künstlich/natürlich</button>
-          <button>fokkusiert(?!)</button>
+          <button id="fokus" class="curserButton" onclick="sFokus()">fokussiert</button>
           <button class="curserButton"><div id="sliderDelayAmp" class="slide"></div>nüchtern/berauscht</button>
           <button><input id="fill" type="text"></button>
-          <button>krank(?!)</button>
-          <button>chronisch krank(?!)</button>
+
+          <button id="krank" class="curserButton" onclick="sKrank()">krank</button>
+          <button id="chronischkrank" class="curserButton" onclick="sChronischkrank()">chronisch krank</button>
           <button class="curserButton"><div id="sliderBubbleHeight" class="slide"></div>normal/schmal</button>
           <button><input id="fill" type="text"></button>
-          <button>gesund(?!)</button>
-          <button>körperlich behindert(?!)</button>
-          <button>geistig behindert(?!)</button>
+          <button id="gesund" class="curserButton" onclick="sGesund()">gesund</button>
+          <button id="koerperlichbehindert" class="curserButton" onclick="sKoerperlichbehindert()">körperlich behindert</button>
+          <button id="geistigbehindert" class="curserButton" onclick="sGeistigbehindert()">geistig behindert</button>
           <button><input id="fill" type="text"></button>
-          <button>krankenversichert(?!)</button>
-          <button>nicht versichert(?!)</button>
-          <button>privat versichert(?!)</button>
-          <button>gesetzlich versichert(?!)</button>
+          <button  id="nichtversichert" class="curserButton" onclick="sNichtversichert()">nicht versichert</button>
+          <button id="privat" class="curserButton" onclick="sPrivat()">privat versichert</button>
+          <button id="kasse" class="curserButton" onclick="sKasse()">gesetzlich versichert</button>
           <button><input id="fill2" type="text"></button>
           <button id="allergiker" class="curserButton" onclick="sAllergiker()">Allergiker*in</button>
           <button><input id="fill2" type="text"></button>
-          <button>Frühaufsteher*in(?!)</button>
-          <button>Langschläfer*in(?!)</button>
+
+          <button id="fruehaufsteher" class="curserButton" onclick="sFruehaufsteher()">Frühaufsteher*in</button>
+          <button id="langschlaefer" class="curserButton" onclick="sLangschlaefer()">Langschläfer*in</button>
           <button><input id="fill" type="text"></button>
-          <button>Alkoholiker*in(?!)</button>
-          <button>Raucher*in(?!)</button>
-          <button>Drogenabhängige*r(?!)</button>
+
+          <button id="alkoholiker" class="curserButton" onclick="sAlkoholiker()">Alkoholiker*in</button>
+          <button id="raucher" class="curserButton" onclick="sRaucher()">Raucher*in</button>
+          <button id="drogenabhaengig" class="curserButton" onclick="sDrogenabhaengig()">Drogenabhängige*r</button>
           <button><input id="fill" type="text"></button>
+
           <button class="curserButton"><div id="sliderBubbleAngle" class="slide"></div>unsortiert/sortiert</button>
           <button><input id="fill2" type="text"></button>
-          <button>neugierig(?!)</button>
-          <button>enthusiastisch(?!)</button>
+          <button id="aufmerksam" class="curserButton" onclick="sAufmerksam()">aufmerksam</button>
+          <button id="enthusiastisch" class="curserButton" onclick="sEnthusiastisch()">enthusiastisch</button>
           <button><input id="fill" type="text"></button>
+          <button id="eso" class="curserButton" onclick="sEso()">esotherisch</button>
+          <button id="freundlich" class="curserButton" onclick="sFreundlich()">freundlich</button>
+          <button id="besorgt" class="curserButton" onclick="sBesorgt()">besorgt</button>
+          <button><input id="fill" type="text"></button>
+
           <button>Geburtsjahr: <input id="fill" type="text"></button>
-          <button>Wassermann(?!)</button>
-          <button>Fisch(?!)</button>
-          <button>Widder(?!)</button>
-          <button>Stier(?!)</button>
-          <button>Zwilling(?!)</button>
-          <button>Krebs(?!)</button>
-          <button>Skorpion(?!)</button>
-          <button>Schütze(?!)</button>
-          <button>Steinbock(?!)</button>
+          <button id="wassermann" class="curserButton" onclick="sWassermann()">Wassermann</button>
+          <button id="jungfrau" class="curserButton" onclick="sJungfrau()">Jungfrau</button>
+          <button id="widder" class="curserButton" onclick="sWidder()">Widder</button>
+          <button id="stier" class="curserButton" onclick="sStier()">Stier</button>
+          <button id="zwillinge" class="curserButton" onclick="sZwillinge()">Zwilling</button>
+          <button id="krebs" class="curserButton" onclick="sKrebs()">Krebs</button>
+          <button id="skorpion" class="curserButton" onclick="sSkorpion()">Skorpion</button>
+          <button id="schuetze" class="curserButton" onclick="sSchuetze()">Schütze</button>
+          <button id="steinbock" class="curserButton" onclick="sSteinbock()">Steinbock</button>
+          <button id="loewe" class="curserButton" onclick="sLoewe()">Löwe</button>
+          <button id="waage" class="curserButton" onclick="sWaage()">Waage</button>
+
+
           <button><input id="fill" type="text"></button>
-          <button>esotherisch(?!)</button>
-          <button>freundlich(?!)</button>
-          <button>besorgt(?!)</button>
+
+
+
+          <button id="verbindung" class="curserButton" onclick="sVerbindung()">Studentenverbindung</button>
+          <button id="gang" class="curserButton" onclick="sGang()">Gang</button>
+          <button id="club" class="curserButton" onclick="sClub()">Club</button>
+          <button id="sportverein" class="curserButton" onclick="sSportverein()">Sportverein</button>
+
+
+          <button id="trainiert" class="curserButton" onclick="sTrainiert()">trainiert</button>
+          <button><input id="fill3" type="text"></button>
+          <button class="curserButton"><div id="sliderBubbleWidth" class="slide"></div>normal/breit</button>
           <button><input id="fill" type="text"></button>
-          <button>Extremsportler*in(?!)</button>
-          <button>Gamer*in(?!)</button>
-          <button>Bücherwurm(?!)</button>
+
+          <button id="gamer" class="curserButton" onclick="sGamer()">Gamer*in</button>
+          <button id="buecherwurm" class="curserButton" onclick="sBuecherwurm()">Bücherwurm</button>
           <button><input id="fill" type="text"></button>
+
           <button><input id="fill2" type="text"></button>
-          <button>Linux(?!)</button>
-          <button>Windows(?!)</button>
-          <button>MaxOSX(?!)</button>
+          <button id="linux" class="curserButton" onclick="sLinux()">Linux</button>
+          <button id="windows" class="curserButton" onclick="sWindows()">Windows</button>
+          <button id="mac" class="curserButton" onclick="sMac()">MaxOSX</button>
           <button>Passwort: <input id="fill" type="text"></button>
           <button><input id="fill3" type="text"></button>
           <button>eMail: <input id="fill" type="text"></button>
@@ -282,26 +311,30 @@
           <button>Mobilfunkvertrag: <input id="fill" type="text"></button>
           <button>TelefonNr.: <input id="fill" type="text"></button>
           <button><input id="fill5" type="text"></button>
-          <button>Schufa Score: <input id="fill" type="text"></button>
           <button><input id="fill" type="text"></button>
-          <button>Puma(?!)</button>
-          <button>Adidas(?!)</button>
-          <button>Nike(?!)</button>
-          <button>Red Bull(?!)</button>
+
+          <button id="puma" class="curserButton" onclick="sPuma()">Puma</button>
+          <button id="adidas" class="curserButton" onclick="sAdidas()">Adidas</button>
+          <button id="nike" class="curserButton" onclick="sNike()">Nike</button>
+          <button id="redbull" class="curserButton" onclick="sRedbull()">Red Bull</button>
           <button><input id="fill3" type="text"></button>
           <button><input id="fill2" type="text"></button>
           <button><input id="fill" type="text"></button>
+
           <button class="curserButton"><div id="sliderBubbleRotate" class="slide"></div>gerade/schief</button>
+
           <button><input id="fill3" type="text"></button>
           <button><input id="fill" type="text"></button>
-          <button>Mercedes-Benz(?!)</button>
-          <button>Opel(?!)</button>
-          <button>BMW(?!)</button>
+
+          <button id="mercedes" class="curserButton" onclick="sMercedes()">Mercedes-Benz</button>
+          <button id="opel" class="curserButton" onclick="sOpel()">Opel</button>
+          <button id="bmw" class="curserButton" onclick="sBmw()">BMW</button>
           <button><input id="fill2" type="text"></button>
           <button><input id="fill5" type="text"></button>
           <button><input id="fill" type="text"></button>
-          <button>Politiker*in(?!)</button>
-          <button>Star(?!)</button>
+
+          <button id="politiker" class="curserButton" onclick="sPolitiker()">Politiker*in</button>
+          <button id="star" class="curserButton" onclick="sStar()">Star</button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill2" type="text"></button>
           <button><input id="fill3" type="text"></button>
@@ -309,19 +342,19 @@
           <button><input id="fill2" type="text"></button>
           <button><input id="fill3" type="text"></button>
           <button><input id="fill4" type="text"></button>
-          <button>Waffenbesitzer*in(?!)</button>
+          <button id="waffe" class="curserButton" onclick="sWaffe()">Waffenbesitzer*in</button>
           <button><input id="fill4" type="text"></button>
           <button><input id="fill2" type="text"></button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill3" type="text"></button>
-          <button><input id="fill5" type="text"></button>
+          <button>Vor <input id="fill5" type="text"> Tagen Nachrichten geguckt.</button>
           <button><input id="fill2" type="text"></button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill3" type="text"></button>
           <button><input id="fill" type="text"></button>
-          <button>Facebook(?!)</button>
-          <button>Twitter(?!)</button>
-          <button>Instagram(?!)</button>
+          <button id="facebook" class="curserButton" onclick="sFacebook()">Facebook</button>
+          <button id="twitter" class="curserButton" onclick="sTwitter()">Twitter</button>
+          <button id="instagram" class="curserButton" onclick="sInstagram()">Instagram</button>
           <button>Usename: <input id="fill" type="text"></button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill5" type="text"></button>
@@ -331,21 +364,58 @@
           <button><input id="fill3" type="text"></button>
           <button><input id="fill2" type="text"></button>
           <button><input id="fill" type="text"></button>
-          <button>Mülltrenner*in(?!)</button>
+          <button id="muell" class="curserButton" onclick="sMuell()">Mülltrenner*in</button>
           <button><input id="fill4" type="text"></button>
           <button><input id="fill3" type="text"></button>
+          <button id="tierlieb" class="curserButton" onclick="sTierlieb()">Tierbesitzer*in</button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill3" type="text"></button>
+          <button id="rtl" class="curserButton" onclick="sRtl()">RTL</button>
           <button><input id="fill5" type="text"></button>
           <div class="space"></div>
           <button class="curserInfo" onclick="location.href='info.html'">Informationen zur Arbeit</button>
           <div class="minispace"></div>
           <p>Diese Liste hat keinen Anspruch auf Vollständigkeit!</p>
-          <p>Jacob Stoy, 2019 | Studiengruppe Informationsdesign | Burg Giebichstein Kunsthochschule Halle</p>
+          <br>
+          <p>Version 0.1</p>
+          <p>Jacob Stoy, 2019 | Visual Strategies and Stories | Studiengruppe Informationsdesign | Burg Giebichenstein Kunsthochschule Halle</p>
       </div>
 
     <script class="javascript" src="identity.js"></script>
+    <script class="javascript" src="timer.js"></script>
     <script>
+    setInterval('window.location.reload()', 600000);
+
+    document.getElementById('timer').innerHTML =
+  10 + ":" + 00;
+startTimer();
+
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  //if(m<0){alert('timer completed')}
+
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+function checktime(sec) {
+  if (sec < 0 && sec <= 0) {
+    return sec;
+  }
+}
+
+    /////////////////////////////////////////////////////////////////////////////////
+
     ////DATUM
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');

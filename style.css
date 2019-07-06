@@ -160,3 +160,9 @@ p {
   left: 2%;
   right: 0;
 }
+
+.footer {
+  font-size: 0.5em;
+  line-height: 2.5em;
+  margin: 0 0 0.5em;
+}
