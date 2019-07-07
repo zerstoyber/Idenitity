@@ -15,6 +15,16 @@
   100%  {color: rgba(255,255,255,0.9);}
 }
 
+@keyframes loadingani {
+  0%    {transform: rotate(0deg);}
+  100%  {transform: rotate(360deg);}
+}
+
+
+
+
+
+
 body {
   font-family: ArialMod;
   font-weight: 100;
@@ -305,4 +315,15 @@ p {
 
 .curserInfo {
   cursor: help;
+}
+
+.loadingpic {
+  float: left;
+  margin-right: 20px;
+  max-width: 48px;
+  transform: rotate(20deg);
+  animation-name: loadingani;
+  animation-duration: 10s;
+  animation-iteration-count: 2;
+  animation-delay: 5s;
 }

@@ -1,3 +1,5 @@
+p5.disableFriendlyErrors = true; // disables FES
+
 var canvas;
 //var mic;
 var amplitude;

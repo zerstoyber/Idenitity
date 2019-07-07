@@ -22,12 +22,24 @@
       <div id="p5_loading" class="loading">
         <div class="margin">
           <div class="loadingtext">
+            <img src="bilder/loading.svg" alt="loading" class="loadingpic">
             <h1>Bitte warten …</h1>
+
             <p class="loadingabstract">
-                Innerhalb der modernen bürgerlichen Gesellschaft versucht <span class="gx">Identität</span> etwas eindeutig Definierbares zu beschreiben. Zur Kategorisierung werden psychologische und soziologische Identitätsmuster verwendet. Die daraus resultierende Einordnung in stereotype Identitätsgruppen, vermitteln allerdings nur ein oberflächliches Bild der Mitmenschen. In der Studienarbeit soll verdeutlicht werden, dass sich der Identitätsbegriff in ständiger Veränderung befindet. Soziale Einflüsse und Veränderungen zwingen den Menschen, sich ständig mit seiner Identität – ob nun bewußt oder unbewußt – auseinander zu setzen. Durch Fieldrecordings und Audioauszügen aus Dokumentation, wird über eine Webseite ein Mikrokosmos einer menschlichen Identität zusammengeklickt. Klänge vermischen sich, erzeugen etwas Neues, werden in der Masse diffus, so dass man zum Strukturieren gezwungen wird, um es für sich selbst wieder verständlicher zu machen und eine Essenz herauskristallisieren zu können.
+                Innerhalb der modernen bürgerlichen Gesellschaft versucht <span class="gx">Identität</span> etwas eindeutig Definierbares zu beschreiben.
+                Zur Kategorisierung werden psychologische und soziologische Identitätsmuster verwendet.
+                Die daraus resultierende Einordnung in stereotype Identitätsgruppen, vermitteln allerdings nur ein oberflächliches Bild der Mitmenschen.
+                <br><br>
+                Auf dieser Webseite soll verdeutlicht werden, dass sich der Identitätsbegriff in ständiger Veränderung befindet.
+                Soziale Einflüsse und Veränderungen zwingen den Menschen, sich ständig mit seiner Identität – ob nun bewußt oder unbewußt – auseinander zu setzen.
+                Durch Fieldrecordings und Audioauszügen aus Dokumentation, kann ein Mikrokosmos einer menschlichen Identität zusammengeklickt werden.
             </p>
             <button class="curserInfo" onclick="location.href='info.html'">Informationen</button>
-            <p class="loadinginfo">Vorsicht diese Webseite greift auf Daten ihres Browsers zurück und benutzt viel JavaScript Code. Dementsprechend könnte ihr Device etwas heiss und langsam werden!</p>
+            <p class="loadinginfo"></p>
+
+            <p class="loadinginfo">Vorsicht diese Webseite greift auf Daten ihres Browsers zurück und benutzt JavaScript. Dementsprechend könnte ihr Computer etwas heiss und langsam werden!
+              <br>27 Megabites, 172 Dateien.
+              <br>Getestet mit MacBook Pro 2018, Mac OSX Mojave, Firefox: 67.</p>
           </div>
         </div>
       </div>
@@ -209,7 +221,7 @@
           <button id="rock" class="curserButton" onclick="sRock()">Rocker*in</button>
           <button id="rave" class="curserButton" onclick="sRave()">Raver*in</button>
           <button id="pop" class="curserButton" onclick="sPop()">Popper*in</button>
-          <button id="jazz" class="curserButton" onclick="sJazz()">Jazzer*in(!)</button>
+          <button id="jazz" class="curserButton" onclick="sJazz()">Jazzer*in</button>
           <button id="volksmusik" class="curserButton" onclick="sVolksmusik()">Volksmusiker*in</button>
           <button id="latin" class="curserButton" onclick="sLatin()">Latina/Latino</button>
           <button id="classic" class="curserButton" onclick="sClassic()">Klassiker*in</button>
@@ -367,7 +379,7 @@
           <button id="muell" class="curserButton" onclick="sMuell()">Mülltrenner*in</button>
           <button><input id="fill4" type="text"></button>
           <button><input id="fill3" type="text"></button>
-          <button id="tierlieb" class="curserButton" onclick="sTierlieb()">Tierbesitzer*in</button>
+          <button id="tierlieb" class="curserButton" onclick="sTierlieb()">tierlieb</button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill3" type="text"></button>
           <button id="rtl" class="curserButton" onclick="sRtl()">RTL</button>
@@ -382,12 +394,11 @@
       </div>
 
     <script class="javascript" src="identity.js"></script>
-    <script class="javascript" src="timer.js"></script>
     <script>
-    setInterval('window.location.reload()', 600000);
+    setInterval('window.location.reload()', 300000);
 
     document.getElementById('timer').innerHTML =
-  10 + ":" + 00;
+  5 + ":" + 00;
 startTimer();
 
 function startTimer() {
