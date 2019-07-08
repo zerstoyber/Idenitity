@@ -3,17 +3,17 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Identität</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <title>Identität – Beta Version 0.1</title>
+    <script src="p5.js"></script>
+    <script src="assets/p5.min.js"></script>
+    <script src="p5.dom.js"></script>
+    <script src="assets/p5.dom.min.js"></script>
+    <script src="p5.sound.js"></script>
+    <script src="assets/p5.sound.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://www.google.com/jsapi"></script>
     <link rel="stylesheet" href="identity.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script class="javascript" src="nouislider.js"></script>
-    <link rel="stylesheet" href="nouislider.css">
+    <script src="assets/nouislider.js"></script>
+    <link rel="stylesheet" href="assets/nouislider.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -28,28 +28,29 @@
             <p class="loadingabstract">
                 Innerhalb der modernen bürgerlichen Gesellschaft versucht <span class="gx">Identität</span> etwas eindeutig Definierbares zu beschreiben.
                 Zur Kategorisierung werden psychologische und soziologische Identitätsmuster verwendet.
-                Die daraus resultierende Einordnung in stereotype Identitätsgruppen, vermitteln allerdings nur ein oberflächliches Bild der Mitmenschen.
-                <br><br>
+                Die daraus resultierende Einordnung in stereotype Identitätsgruppen vermittelt allerdings nur ein oberflächliches Bild der Mitmenschen.
+            </p>
+            <p class="loadingabstract">
                 Auf dieser Webseite soll verdeutlicht werden, dass sich der Identitätsbegriff in ständiger Veränderung befindet.
                 Soziale Einflüsse und Veränderungen zwingen den Menschen, sich ständig mit seiner Identität – ob nun bewußt oder unbewußt – auseinander zu setzen.
-                Durch Fieldrecordings und Audioauszügen aus Dokumentation, kann ein Mikrokosmos einer menschlichen Identität zusammengeklickt werden.
+                Durch Fieldrecordings und Audioauszügen aus Dokumentationen, kann ein Mikrokosmos einer menschlichen Identität zusammengeklickt werden.
             </p>
             <button class="curserInfo" onclick="location.href='info.html'">Informationen</button>
             <p class="loadinginfo"></p>
 
             <p class="loadinginfo">Vorsicht diese Webseite greift auf Daten ihres Browsers zurück und benutzt JavaScript. Dementsprechend könnte ihr Computer etwas heiss und langsam werden!
-              <br>27 Megabites, 172 Dateien.
+              <br>27 Megabytes, 177 Dateien.
               <br>Getestet mit MacBook Pro 2018, Mac OSX Mojave, Firefox: 67.</p>
           </div>
         </div>
       </div>
 
-      <div id="timer" class="gx"></div>
+      <div id="timer"></div>
 
       <div class="aktion">
-          <button id="frau" class="curserButton" onclick="sFrau()">Frau</button>
-          <button id="mann" class="curserButton" onclick="sMann()">Mann</button>
-          <button id="trans" class="curserButton" onclick="sTrans()">Trans*</button>
+          <button id="frau" class="curserButton" onclick="sFrau()">weiblich</button>
+          <button id="mann" class="curserButton" onclick="sMann()">männlich</button>
+          <button id="trans" class="curserButton" onclick="sTrans()">divers</button>
           <button>Name: <input id="fill" type="text"></button>
           <button id="jung" class="curserButton" onclick="sJung()">jung</button>
           <button id="mittleresAlter" class="curserButton" onclick="sMittleresAlter()">mittleres Alter</button>
@@ -58,16 +59,16 @@
           <button id="zeit" class="gx"></button>
           <button class="curserButton"><div id="sliderBubbleSize" class="slide"></div>klein/groß</button>
           <button><input id="fill" type="text"></button>
-          <button id="uebergewicht" class="curserButton" onclick="sUebergewicht()">übergewicht</button>
+          <button id="uebergewicht" class="curserButton" onclick="sUebergewicht()">übergewichtig</button>
           <button id="untergewicht" class="curserButton" onclick="sUntergewicht()">untergewichtig</button>
-          <button id="einzelkind" class="curserButton" onclick="sEinzelkind()">einzelkind</button>
-          <button id="geschwisterkind" class="curserButton" onclick="sGeschwisterkind()">geschwisterkind</button>
+          <button id="einzelkind" class="curserButton" onclick="sEinzelkind()">Einzelkind</button>
+          <button id="geschwisterkind" class="curserButton" onclick="sGeschwisterkind()">Geschwisterkind</button>
           <button id="waisenkind" class="curserButton" onclick="sWaisenkind()">Waisenkind</button>
           <button id="scheidungskind" class="curserButton" onclick="sScheindungskind()">Scheidungskind</button>
           <button><input id="fill4" type="text"></button>
-          <button id="akademikerkind" class="curserButton" onclick="sAkademikerKind()">Akademikerkind</button>
+          <button id="akademikerkind" class="curserButton" onclick="sAkademikerKind()">Akademiker*innenkind</button>
           <button id="beamtenkind" class="curserButton" onclick="sBeamtenkind()">Beamtenkind</button>
-          <button id="arbeiterkind" class="curserButton" onclick="sArbeiterkind()">Arbeiterkind</button>
+          <button id="arbeiterkind" class="curserButton" onclick="sArbeiterkind()">Arbeiter*innenkind</button>
           <button id="bauernkind" class="curserButton" onclick="sBauernkind()">Bauernkind</button>
           <button><input id="fill" type="text"></button>
           <button id="verheiratet" class="curserButton" onclick="sVerheiratet()">verheiratet</button>
@@ -82,7 +83,7 @@
           <button id="weather" class="gx"></button>
           <button id="temp" class="gx"></button>
           <button><input id="fill3" type="text"></button>
-          <button id="hetero" class="curserButton" onclick="sHetero()">hetero</button>
+          <button id="hetero" class="curserButton" onclick="sHetero()">heterosexuell</button>
           <button id="homo" class="curserButton" onclick="sHomo()">homosexuell</button>
           <button id="bisex" class="curserButton" onclick="sBisex()">bisexuell</button>
           <button id="asex" class="curserButton" onclick="sAsex()">asexuell</button>
@@ -97,14 +98,14 @@
           <button id="atheist" class="curserButton" onclick="sAtheist()">Atheist*in</button>
           <button><input id="fill2" type="text"></button>
           <button class="curserButton"><div id="sliderBubbleSpread" class="slide"></div>sozial/isoliert</button>
-          <button id="doerflich" class="curserButton" onclick="sDoerflich()">doerflich</button>
+          <button id="doerflich" class="curserButton" onclick="sDoerflich()">dörflich</button>
           <button id="staedtisch" class="curserButton" onclick="sStaedtisch()">städtisch</button>
           <button><input id="fill" type="text"></button>
           <button id="westdeutsch" class="curserButton" onclick="sWestdeutsch()">westdeutsch</button>
           <button id="ostdeutsch" class="curserButton" onclick="sOstdeutsch()">ostdeutsch</button>
           <button><input id="fill" type="text"></button>
           <button id="saechsisch" class="curserButton" onclick="sSaechsisch()">sächsisch</button>
-          <button id="schwaebisch" class="curserButton" onclick="sSchwaebisch()">schwaebisch</button>
+          <button id="schwaebisch" class="curserButton" onclick="sSchwaebisch()">schwäbisch</button>
           <button id="hessisch" class="curserButton" onclick="sHessisch()">hessisch</button>
           <button id="koelsch" class="curserButton" onclick="sKoelsch()">kölsch</button>
           <button id="bayerisch" class="curserButton" onclick="sBayerisch()">bayerisch</button>
@@ -137,14 +138,14 @@
           <button id="ausbildung" class="curserButton" onclick="sAusbildung()">Ausbildung</button>
 
           <button id="bundeswehr" class="curserButton" onclick="sBundeswehr()">Wehrdienst</button>
-          <button id="zivi" class="curserButton" onclick="sZivi()">Zivieldienst</button>
+          <button id="zivi" class="curserButton" onclick="sZivi()">Zivildienst</button>
           <button id="ausgemuster" class="curserButton" onclick="sAusgemuster()">ausgemustert</button>
           <button><input id="fill" type="text"></button>
 
           <button id="meister" class="curserButton" onclick="sMeister()">Meister*in</button>
           <button><input id="fill3" type="text"></button>
-          <button id="akademiker" class="curserButton" onclick="sAkademiker()">Hochschule/Univeristät</button>
-          <button>Studierte Semester: <input id="fill5" type="text"></button>
+          <button id="akademiker" class="curserButton" onclick="sAkademiker()">Hochschule/Universität</button>
+          <button>studierte Semester: <input id="fill5" type="text"></button>
           <button><input id="fill" type="text"></button>
           <button id="promoviert" class="curserButton" onclick="sPromoviert()">promoviert</button>
           <button><input id="fill3" type="text"></button>
@@ -156,6 +157,7 @@
           <button id="freiberufler" class="curserButton" onclick="sFreiberufler()">Freiberufler*in</button>
           <button id="angestellte" class="curserButton" onclick="sAngestellte()">Arbeiter*in/Angestellte*r</button>
           <button id="geschaeftsfuehrer" class="curserButton" onclick="sGeschaeftsfuehrer()">Geschäftsführer*in</button>
+          <button id="zuverlaessig" class="curserButton" onclick="sZuverlaessig()">zuverlässlig</button>
           <button><input id="fill4" type="text"></button>
 
           <button id="ober" class="curserButton" onclick="sOber()">Oberschicht</button>
@@ -184,7 +186,7 @@
           <button><input id="fill" type="text"></button>
           <button id="zugfahrer" class="curserButton" onclick="sZugfahrer()">Zugfahrer*in</button>
           <button id="bus" class="curserButton" onclick="sBus()">Busfahrer*in</button>
-          <button id="fussgaenger" class="curserButton" onclick="sFussgaenger()">Fussgaenger*in</button>
+          <button id="fussgaenger" class="curserButton" onclick="sFussgaenger()">Fussgänger*in</button>
           <button id="vielflieger" class="curserButton" onclick="sVielflieger()">Vielflieger*in</button>
           <button><input id="fill2" type="text"></button>
 
@@ -213,7 +215,7 @@
 
           <button><input id="fill" type="text"></button>
 
-          <button id="tattoo" class="curserButton" onclick="sTattoo()">tattowiert</button>
+          <button id="tattoo" class="curserButton" onclick="sTattoo()">tätowiert</button>
           <button id="op" class="curserButton" onclick="sOp()">operiert</button>
 
           <button><input id="fill2" type="text"></button>
@@ -238,9 +240,10 @@
 
           <button>aktuelle Stimmung: <input id="fill" type="text"></button>
           <button id="kreativ" class="curserButton" onclick="sKreativ()">kreativ</button>
-          <button class="curserButton"><div id="sliderFarbeDrei" class="slide"></div>künstlich/natürlich</button>
+          <button class="curserButton"><div id="sliderFarbeDrei" class="slide"></div>natürlich/künstlich</button>
           <button id="fokus" class="curserButton" onclick="sFokus()">fokussiert</button>
           <button class="curserButton"><div id="sliderDelayAmp" class="slide"></div>nüchtern/berauscht</button>
+          <button id="stabil" class="curserButton" onclick="sStabil()">stabil</button>
           <button><input id="fill" type="text"></button>
 
           <button id="krank" class="curserButton" onclick="sKrank()">krank</button>
@@ -272,6 +275,7 @@
           <button id="aufmerksam" class="curserButton" onclick="sAufmerksam()">aufmerksam</button>
           <button id="enthusiastisch" class="curserButton" onclick="sEnthusiastisch()">enthusiastisch</button>
           <button><input id="fill" type="text"></button>
+          <button id="skurril" class="curserButton" onclick="sSkurril()">skurril</button>
           <button id="eso" class="curserButton" onclick="sEso()">esotherisch</button>
           <button id="freundlich" class="curserButton" onclick="sFreundlich()">freundlich</button>
           <button id="besorgt" class="curserButton" onclick="sBesorgt()">besorgt</button>
@@ -304,6 +308,11 @@
           <button id="trainiert" class="curserButton" onclick="sTrainiert()">trainiert</button>
           <button><input id="fill3" type="text"></button>
           <button class="curserButton"><div id="sliderBubbleWidth" class="slide"></div>normal/breit</button>
+          <button><input id="fill4" type="text"></button>
+
+          <button id="sexy" class="curserButton" onclick="sSexy()">sexy</button>
+          <button id="romantisch" class="curserButton" onclick="sRomantisch()">romantisch</button>
+
           <button><input id="fill" type="text"></button>
 
           <button id="gamer" class="curserButton" onclick="sGamer()">Gamer*in</button>
@@ -367,7 +376,7 @@
           <button id="facebook" class="curserButton" onclick="sFacebook()">Facebook</button>
           <button id="twitter" class="curserButton" onclick="sTwitter()">Twitter</button>
           <button id="instagram" class="curserButton" onclick="sInstagram()">Instagram</button>
-          <button>Usename: <input id="fill" type="text"></button>
+          <button>Username: <input id="fill" type="text"></button>
           <button><input id="fill" type="text"></button>
           <button><input id="fill5" type="text"></button>
           <button><input id="fill3" type="text"></button>
@@ -389,41 +398,46 @@
           <div class="minispace"></div>
           <p>Diese Liste hat keinen Anspruch auf Vollständigkeit!</p>
           <br>
-          <p>Version 0.1</p>
+          <p>Beta Version 0.1</p>
           <p>Jacob Stoy, 2019 | Visual Strategies and Stories | Studiengruppe Informationsdesign | Burg Giebichenstein Kunsthochschule Halle</p>
       </div>
 
     <script class="javascript" src="identity.js"></script>
     <script>
-    setInterval('window.location.reload()', 300000);
+//    setInterval('window.location.reload()', 350000);
+      setInterval('location.reload(true)', 450000);
 
-    document.getElementById('timer').innerHTML =
-  5 + ":" + 00;
-startTimer();
+//    setInterval('window.location.reload()', 350000);
 
-function startTimer() {
-  var presentTime = document.getElementById('timer').innerHTML;
-  var timeArray = presentTime.split(/[:]+/);
-  var m = timeArray[0];
-  var s = checkSecond((timeArray[1] - 1));
-  if(s==59){m=m-1}
-  //if(m<0){alert('timer completed')}
+//    location.reload(true);
 
-  document.getElementById('timer').innerHTML =
-    m + ":" + s;
-  setTimeout(startTimer, 1000);
-}
 
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
-  if (sec < 0) {sec = "59"};
-  return sec;
-}
-function checktime(sec) {
-  if (sec < 0 && sec <= 0) {
-    return sec;
-  }
-}
+    document.getElementById('timer').innerHTML = 7 + ":" + 00;
+    startTimer();
+
+    function startTimer() {
+      var presentTime = document.getElementById('timer').innerHTML;
+      var timeArray = presentTime.split(/[:]+/);
+      var m = timeArray[0];
+      var s = checkSecond((timeArray[1] - 1));
+      if(s==59){m=m-1}
+      //if(m<0){alert('timer completed')}
+
+      document.getElementById('timer').innerHTML =
+        m + ":" + s;
+      setTimeout(startTimer, 1000);
+    }
+
+    function checkSecond(sec) {
+      if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+      if (sec < 0) {sec = "59"};
+      return sec;
+    }
+
+    function checktime(sec) {
+      if (sec < 0 && sec <= 0) {
+        return sec;
+    }}
 
     /////////////////////////////////////////////////////////////////////////////////
 

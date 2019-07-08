@@ -5,10 +5,11 @@ var canvas;
 var amplitude;
 var fft;
 var delay;
-let angle = 0;
+//  var level;
+//let angle = 0;
 
 
-var afrika, akademiker, akademikerkind, alkoholiker, alleinerziehend, allergiker, alt, alternativ, angestellte, antark, antifa, arbeiterkind, arbeitskleidung, arbeitslos, asien, atheist, aufmerksam, augenblau, augenbraun, augengruen, augenhaselnussbraun, augenschwarz, ausgemuster, austra, autofahrer, bahai, bauernkind, bayerisch, beamtenkind, berlinerisch, besorgt, bmw, buddhist, buecherwurm, buero, bundeswehr, bus, christ, chronischkrank, classic, club, doerflich, drogenabhaengig, einzelkind, enthusiastisch, eso, euro, experimental, facebook, fleischfresser, frau, freiberufler, fruehaufsteher, fussgaenger, gamer, gang, geistigbehindert, gelb, geschaeftsfuehrer, geschieden, geschwisterkind, gruen, hessisch, hetero, hindu, homo, instagram, jazz, jude, jung, jungfrau, kasse, koelsch, koerperlichbehindert, krank, kreativ, krebs, kurzehaare, langehaare, langschlaefer, latin, liberal, linux, loewe, mac, mann, meister, mercedes, mieter, mitte, mittleresAlter, modebewusst, muell, muslim, national, nichtversichert, nord, ober, opel, ostdeutsch, pendler, politiker, pop, privat, promoviert, radfahrer, raucher, rave, rock, rot, rtl, saechsisch, scheidungskind, schuetze, schule1, schule2, schule3, schule4, schwaebisch, schwanger, schwarz, serioes, skorpion, sport, sportverein, staedtisch, star, steinbock, steuer, stier, straftaeter, sued, tattoo, tierlieb, trainiert, trans, twitter, uebergewicht, unten, untergewicht, veganer, vegetarisch, verbindung, verheiratet, vermieter, verwitwet, vielflieger, volksmusik, waage, waffe, waisenkind, wassermann, weiss, widder, windows, zivi, zugfahrer, zwillinge, adidas, asex, ausbildung, bisex, fokus, freundlich, gesund, glatze, ledig, nike, op, puma, redbull, westdeutsch;
+var afrika, akademiker, akademikerkind, alkoholiker, alleinerziehend, allergiker, alt, alternativ, angestellte, antark, antifa, arbeiterkind, arbeitskleidung, arbeitslos, asien, atheist, aufmerksam, augenblau, augenbraun, augengruen, augenhaselnussbraun, augenschwarz, ausgemuster, austra, autofahrer, bahai, bauernkind, bayerisch, beamtenkind, berlinerisch, besorgt, bmw, buddhist, buecherwurm, buero, bundeswehr, bus, christ, chronischkrank, classic, club, doerflich, drogenabhaengig, einzelkind, enthusiastisch, eso, euro, experimental, facebook, fleischfresser, frau, freiberufler, fruehaufsteher, fussgaenger, gamer, gang, geistigbehindert, gelb, geschaeftsfuehrer, geschieden, geschwisterkind, gruen, hessisch, hetero, hindu, homo, instagram, jazz, jude, jung, jungfrau, kasse, koelsch, koerperlichbehindert, krank, kreativ, krebs, kurzehaare, langehaare, langschlaefer, latin, liberal, linux, loewe, mac, mann, meister, mercedes, mieter, mitte, mittleresAlter, modebewusst, muell, muslim, national, nichtversichert, nord, ober, opel, ostdeutsch, pendler, politiker, pop, privat, promoviert, radfahrer, raucher, rave, rock, rot, rtl, saechsisch, scheidungskind, schuetze, schule1, schule2, schule3, schule4, schwaebisch, schwanger, schwarz, serioes, skorpion, sport, sportverein, staedtisch, star, steinbock, steuer, stier, straftaeter, sued, tattoo, tierlieb, trainiert, trans, twitter, uebergewicht, unten, untergewicht, veganer, vegetarisch, verbindung, verheiratet, vermieter, verwitwet, vielflieger, volksmusik, waage, waffe, waisenkind, wassermann, weiss, widder, windows, zivi, zugfahrer, zwillinge, adidas, asex, ausbildung, bisex, fokus, freundlich, gesund, glatze, ledig, nike, op, puma, redbull, westdeutsch, romantisch, sexy, skurril, stabil, zuverlaessig;
 
 /////////////////////////////////////////////////////////
 ////////////////////////SLIDER///////////////////////////
@@ -188,11 +189,11 @@ sliderBubbleSpread.noUiSlider.on('update', function( value ){
 var bubbleRotate;
 var sliderBubbleRotate = document.getElementById('sliderBubbleRotate');
 noUiSlider.create(sliderBubbleRotate, {
-  start: [50],
+  start: [5],
   step: 1,
   range: {
     min: [0],
-    max: [100]
+    max: [10]
   }
 });
 
@@ -239,7 +240,17 @@ sliderBubbleWidth.noUiSlider.on('update', function( value ){
 ///////////////////////PRELOAD///////////////////////////
 /////////////////////////////////////////////////////////
 
+// const FOLDER = 'sound/', EXT = '.mp3',
+//       INDEX_START = 0, INDEX_END = 176,
+//       INDEX_TOTAL = 1 + INDEX_END - INDEX_START,
+//       sounds = Array(INDEX_TOTAL);
+
 function preload() {
+  soundFormats('mp3');
+
+  // for (let i = 0; i < INDEX_TOTAL; ++i)
+  // sounds[i] = loadSound(FOLDER + (i + INDEX_START) + EXT);
+
   afrika = loadSound('sounds/afrika.mp3');
   akademiker = loadSound('sounds/akademiker.mp3');
   akademikerkind = loadSound('sounds/akademikerkind.mp3');
@@ -413,6 +424,12 @@ function preload() {
   puma = loadSound('sounds/puma.mp3');
   redbull = loadSound('sounds/redbull.mp3');
   westdeutsch = loadSound('sounds/westdeutsch.mp3');
+
+  romantisch = loadSound('sounds/romantisch.mp3');
+  sexy = loadSound('sounds/sexy.mp3');
+  skurril = loadSound('sounds/skurril.mp3');
+  stabil = loadSound('sounds/stabil.mp3');
+  zuverlaessig = loadSound('sounds/zuverlaessig.mp3');
 }
 
 /////////////////////////////////////////////////////////
@@ -420,13 +437,12 @@ function preload() {
 /////////////////////////////////////////////////////////
 
 function setup(){
-  amplitude = new p5.Amplitude(0.9);
+//  amplitude = new p5.Amplitude(0.9);
+  //  var level = amplitude.getLevel();
   fft = new p5.FFT(0.9, 512);
   delay = new p5.Delay();
-  reverb = new p5.Reverb();
-//  mic = new p5.AudioIn();
-//  mic.start();
-
+  //  mic = new p5.AudioIn();
+  //  mic.start();
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style('z-index', '-3');
@@ -439,709 +455,201 @@ function setup(){
 
 function draw() {
 //  var micLevel = mic.getLevel()*100;
-//  var level = amplitude.getLevel();
-//  var size = map(level, 0, 100, 0, 500);
+//  var l = level*10;
 //  var h = hour();
 //  var m = minute();
 //  var s = second();
-  e = constrain(farbeEins, 0, 255);
-  z = constrain(farbeZwei, 0, 255);
-  d = constrain(farbeDrei, 0, 255);
+  e = constrain(farbeEins, 0, 200);
+  z = constrain(farbeZwei, 0, 200);
+  d = constrain(farbeDrei, 0, 200);
 
 //  micLevelSize = constrain(micLevel, 0, 200);
 //background(micLevelSize+e, micLevelSize+z, micLevelSize+d);
+//  blendMode(HARD_LIGHT);
   background(e, z, d);
-
+//  background(l, l, l);
   identityBubble();
-//  filter(BLUR, 1);
 
-  afrika.rate(speed);
-  afrika.pan(pan);
-  delay.process(afrika, .30, .7, 2300);
-
-  akademiker.rate(speed);
-  akademiker.pan(pan);
-  delay.process(akademiker, .30, .7, 2300);
-
-  akademikerkind.rate(speed);
-  akademikerkind.pan(pan);
-  delay.process(akademikerkind, .30, .7, 2300);
-
-  alkoholiker.rate(speed);
-  alkoholiker.pan(pan);
-  delay.process(alkoholiker, .30, .7, 2300);
-
-  alleinerziehend.rate(speed);
-  alleinerziehend.pan(pan);
-  delay.process(alleinerziehend, .30, .7, 2300);
-
-  allergiker.rate(speed);
-  allergiker.pan(pan);
-  delay.process(allergiker, .30, .7, 2300);
-
-  alt.rate(speed);
-  alt.pan(pan);
-  delay.process(alt, .30, .7, 2300);
-
-  alternativ.rate(speed);
-  alternativ.pan(pan);
-  delay.process(alternativ, .30, .7, 2300);
-
-  angestellte.rate(speed);
-  angestellte.pan(pan);
-  delay.process(angestellte, .30, .7, 2300);
-
-  antark.rate(speed);
-  antark.pan(pan);
-  delay.process(antark, .30, .7, 2300);
-
-  antifa.rate(speed);
-  antifa.pan(pan);
-  delay.process(antifa, .30, .7, 2300);
-
-  arbeiterkind.rate(speed);
-  arbeiterkind.pan(pan);
-  delay.process(arbeiterkind, .30, .7, 2300);
-
-  arbeitskleidung.rate(speed);
-  arbeitskleidung.pan(pan);
-  delay.process(arbeitskleidung, .30, .7, 2300);
-
-  arbeitslos.rate(speed);
-  arbeitslos.pan(pan);
-  delay.process(arbeitslos, .30, .7, 2300);
-
-  asien.rate(speed);
-  asien.pan(pan);
-  delay.process(asien, .30, .7, 2300);
-
-  atheist.rate(speed);
-  atheist.pan(pan);
-  delay.process(atheist, .30, .7, 2300);
-
-  aufmerksam.rate(speed);
-  aufmerksam.pan(pan);
-  delay.process(aufmerksam, .30, .7, 2300);
-
-  augenblau.rate(speed);
-  augenblau.pan(pan);
-  delay.process(augenblau, .30, .7, 2300);
-
-  augenbraun.rate(speed);
-  augenbraun.pan(pan);
-  delay.process(augenbraun, .30, .7, 2300);
-
-  augengruen.rate(speed);
-  augengruen.pan(pan);
-  delay.process(augengruen, .30, .7, 2300);
-
-  augenhaselnussbraun.rate(speed);
-  augenhaselnussbraun.pan(pan);
-  delay.process(augenhaselnussbraun, .30, .7, 2300);
-
-  augenschwarz.rate(speed);
-  augenschwarz.pan(pan);
-  delay.process(augenschwarz, .30, .7, 2300);
-
-  austra.rate(speed);
-  austra.pan(pan);
-  delay.process(austra, .30, .7, 2300);
-
-  autofahrer.rate(speed);
-  autofahrer.pan(pan);
-  delay.process(autofahrer, .30, .7, 2300);
-
-  bahai.rate(speed);
-  bahai.pan(pan);
-  delay.process(bahai, .30, .7, 2300);
-
-  bauernkind.rate(speed);
-  bauernkind.pan(pan);
-  delay.process(bauernkind, .30, .7, 2300);
-
-  bayerisch.rate(speed);
-  bayerisch.pan(pan);
-  delay.process(bayerisch, .30, .7, 2300);
-
-  beamtenkind.rate(speed);
-  beamtenkind.pan(pan);
-  delay.process(beamtenkind, .30, .7, 2300);
-
-  berlinerisch.rate(speed);
-  berlinerisch.pan(pan);
-  delay.process(berlinerisch, .30, .7, 2300);
-
-  besorgt.rate(speed);
-  besorgt.pan(pan);
-  delay.process(besorgt, .30, .7, 2300);
-
-  bmw.rate(speed);
-  bmw.pan(pan);
-  delay.process(bmw, .30, .7, 2300);
-
-  buddhist.rate(speed);
-  buddhist.pan(pan);
-  delay.process(buddhist, .30, .7, 2300);
-
-  buecherwurm.rate(speed);
-  buecherwurm.pan(pan);
-  delay.process(buecherwurm, .30, .7, 2300);
-
-  buero.rate(speed);
-  buero.pan(pan);
-  delay.process(buero, .30, .7, 2300);
-
-  bundeswehr.rate(speed);
-  bundeswehr.pan(pan);
-  delay.process(bundeswehr, .30, .7, 2300);
-
-  bus.rate(speed);
-  bus.pan(pan);
-  delay.process(bus, .30, .7, 2300);
-
-  christ.rate(speed);
-  christ.pan(pan);
-  delay.process(christ, .30, .7, 2300);
-
-  chronischkrank.rate(speed);
-  chronischkrank.pan(pan);
-  delay.process(chronischkrank, .30, .7, 2300);
-
-  classic.rate(speed);
-  classic.pan(pan);
-  delay.process(classic, .30, .7, 2300);
-
-  club.rate(speed);
-  club.pan(pan);
-  delay.process(club, .30, .7, 2300);
-
-  doerflich.rate(speed);
-  doerflich.pan(pan);
-  delay.process(doerflich, .30, .7, 2300);
-
-  drogenabhaengig.rate(speed);
-  drogenabhaengig.pan(pan);
-  delay.process(drogenabhaengig, .30, .7, 2300);
-
-  einzelkind.rate(speed);
-  einzelkind.pan(pan);
-  delay.process(einzelkind, .30, .7, 2300);
-
-  enthusiastisch.rate(speed);
-  enthusiastisch.pan(pan);
-  delay.process(enthusiastisch, .30, .7, 2300);
-
-  eso.rate(speed);
-  eso.pan(pan);
-  delay.process(eso, .30, .7, 2300);
-
-  euro.rate(speed);
-  euro.pan(pan);
-  delay.process(euro, .30, .7, 2300);
-
-  experimental.rate(speed);
-  experimental.pan(pan);
-  delay.process(experimental, .30, .7, 2300);
-
-  facebook.rate(speed);
-  facebook.pan(pan);
-  delay.process(facebook, .30, .7, 2300);
-
-  fleischfresser.rate(speed);
-  fleischfresser.pan(pan);
-  delay.process(fleischfresser, .30, .7, 2300);
-
-  frau.rate(speed);
-  frau.pan(pan);
-  delay.process(frau, .30, .7, 2300);
-
-  freiberufler.rate(speed);
-  freiberufler.pan(pan);
-  delay.process(freiberufler, .30, .7, 2300);
-
-  fruehaufsteher.rate(speed);
-  fruehaufsteher.pan(pan);
-  delay.process(fruehaufsteher, .30, .7, 2300);
-
-  fussgaenger.rate(speed);
-  fussgaenger.pan(pan);
-  delay.process(fussgaenger, .30, .7, 2300);
-
-  gamer.rate(speed);
-  gamer.pan(pan);
-  delay.process(gamer, .30, .7, 2300);
-
-  gang.rate(speed);
-  gang.pan(pan);
-  delay.process(gang, .30, .7, 2300);
-
-  geistigbehindert.rate(speed);
-  geistigbehindert.pan(pan);
-  delay.process(geistigbehindert, .30, .7, 2300);
-
-  gelb.rate(speed);
-  gelb.pan(pan);
-  delay.process(gelb, .30, .7, 2300);
-
-  geschaeftsfuehrer.rate(speed);
-  geschaeftsfuehrer.pan(pan);
-  delay.process(geschaeftsfuehrer, .30, .7, 2300);
-
-  geschieden.rate(speed);
-  geschieden.pan(pan);
-  delay.process(geschieden, .30, .7, 2300);
-
-  geschwisterkind.rate(speed);
-  geschwisterkind.pan(pan);
-  delay.process(geschwisterkind, .30, .7, 2300);
-
-  gruen.rate(speed);
-  gruen.pan(pan);
-  delay.process(gruen, .30, .7, 2300);
-
-  hessisch.rate(speed);
-  hessisch.pan(pan);
-  delay.process(hessisch, .30, .7, 2300);
-
-  hetero.rate(speed);
-  hetero.pan(pan);
-  delay.process(hetero, .30, .7, 2300);
-
-  hindu.rate(speed);
-  hindu.pan(pan);
-  delay.process(hindu, .30, .7, 2300);
-
-  homo.rate(speed);
-  homo.pan(pan);
-  delay.process(homo, .30, .7, 2300);
-
-  instagram.rate(speed);
-  instagram.pan(pan);
-  delay.process(instagram, .30, .7, 2300);
-
-  jazz.rate(speed);
-  jazz.pan(pan);
-  delay.process(jazz, .30, .7, 2300);
-
-  jude.rate(speed);
-  jude.pan(pan);
-  delay.process(jude, .30, .7, 2300);
-
-  jung.rate(speed);
-  jung.pan(pan);
-  delay.process(jung, .30, .7, 2300);
-
-  jungfrau.rate(speed);
-  jungfrau.pan(pan);
-  delay.process(jungfrau, .30, .7, 2300);
-
-  kasse.rate(speed);
-  kasse.pan(pan);
-  delay.process(kasse, .30, .7, 2300);
-
-  koelsch.rate(speed);
-  koelsch.pan(pan);
-  delay.process(koelsch, .30, .7, 2300);
-
-  koerperlichbehindert.rate(speed);
-  koerperlichbehindert.pan(pan);
-  delay.process(koerperlichbehindert, .30, .7, 2300);
-
-  krank.rate(speed);
-  krank.pan(pan);
-  delay.process(krank, .30, .7, 2300);
-
-  kreativ.rate(speed);
-  kreativ.pan(pan);
-  delay.process(kreativ, .30, .7, 2300);
-
-  krebs.rate(speed);
-  krebs.pan(pan);
-  delay.process(krebs, .30, .7, 2300);
-
-  kurzehaare.rate(speed);
-  kurzehaare.pan(pan);
-  delay.process(kurzehaare, .30, .7, 2300);
-
-  langehaare.rate(speed);
-  langehaare.pan(pan);
-  delay.process(langehaare, .30, .7, 2300);
-
-  langschlaefer.rate(speed);
-  langschlaefer.pan(pan);
-  delay.process(langschlaefer, .30, .7, 2300);
-
-  latin.rate(speed);
-  latin.pan(pan);
-  delay.process(latin, .30, .7, 2300);
-
-  liberal.rate(speed);
-  liberal.pan(pan);
-  delay.process(liberal, .30, .7, 2300);
-
-  linux.rate(speed);
-  linux.pan(pan);
-  delay.process(linux, .30, .7, 2300);
-
-  loewe.rate(speed);
-  loewe.pan(pan);
-  delay.process(loewe, .30, .7, 2300);
-
-  mac.rate(speed);
-  mac.pan(pan);
-  delay.process(mac, .30, .7, 2300);
-
-  mann.rate(speed);
-  mann.pan(pan);
-  delay.process(mann, .30, .7, 2300);
-
-  meister.rate(speed);
-  meister.pan(pan);
-  delay.process(meister, .30, .7, 2300);
-
-  mercedes.rate(speed);
-  mercedes.pan(pan);
-  delay.process(mercedes, .30, .7, 2300);
-
-  mieter.rate(speed);
-  mieter.pan(pan);
-  delay.process(mieter, .30, .7, 2300);
-
-  mitte.rate(speed);
-  mitte.pan(pan);
-  delay.process(mitte, .30, .7, 2300);
-
-  mittleresAlter.rate(speed);
-  mittleresAlter.pan(pan);
-  delay.process(mittleresAlter, .30, .7, 2300);
-
-  modebewusst.rate(speed);
-  modebewusst.pan(pan);
-  delay.process(modebewusst, .30, .7, 2300);
-
-  muell.rate(speed);
-  muell.pan(pan);
-  delay.process(muell, .30, .7, 2300);
-
-  muslim.rate(speed);
-  muslim.pan(pan);
-  delay.process(muslim, .30, .7, 2300);
-
-  national.rate(speed);
-  national.pan(pan);
-  delay.process(national, .30, .7, 2300);
-
-  nichtversichert.rate(speed);
-  nichtversichert.pan(pan);
-  delay.process(nichtversichert, .30, .7, 2300);
-
-  nord.rate(speed);
-  nord.pan(pan);
-  delay.process(nord, .30, .7, 2300);
-
-  ober.rate(speed);
-  ober.pan(pan);
-  delay.process(ober, .30, .7, 2300);
-
-  opel.rate(speed);
-  opel.pan(pan);
-  delay.process(opel, .30, .7, 2300);
-
-  ostdeutsch.rate(speed);
-  ostdeutsch.pan(pan);
-  delay.process(ostdeutsch, .30, .7, 2300);
-
-  pendler.rate(speed);
-  pendler.pan(pan);
-  delay.process(pendler, .30, .7, 2300);
-
-  politiker.rate(speed);
-  politiker.pan(pan);
-  delay.process(politiker, .30, .7, 2300);
-
-  pop.rate(speed);
-  pop.pan(pan);
-  delay.process(pop, .30, .7, 2300);
-
-  privat.rate(speed);
-  privat.pan(pan);
-  delay.process(privat, .30, .7, 2300);
-
-  promoviert.rate(speed);
-  promoviert.pan(pan);
-  delay.process(promoviert, .30, .7, 2300);
-
-  radfahrer.rate(speed);
-  radfahrer.pan(pan);
-  delay.process(radfahrer, .30, .7, 2300);
-
-  raucher.rate(speed);
-  raucher.pan(pan);
-  delay.process(raucher, .30, .7, 2300);
-
-  rave.rate(speed);
-  rave.pan(pan);
-  delay.process(rave, .30, .7, 2300);
-
-  rock.rate(speed);
-  rock.pan(pan);
-  delay.process(rock, .30, .7, 2300);
-
-  rot.rate(speed);
-  rot.pan(pan);
-  delay.process(rot, .30, .7, 2300);
-
-  rtl.rate(speed);
-  rtl.pan(pan);
-  delay.process(rtl, .30, .7, 2300);
-
-  saechsisch.rate(speed);
-  saechsisch.pan(pan);
-  delay.process(saechsisch, .30, .7, 2300);
-
-  scheidungskind.rate(speed);
-  scheidungskind.pan(pan);
-  delay.process(scheidungskind, .30, .7, 2300);
-
-  schuetze.rate(speed);
-  schuetze.pan(pan);
-  delay.process(schuetze, .30, .7, 2300);
-
-  schule1.rate(speed);
-  schule1.pan(pan);
-  delay.process(schule1, .30, .7, 2300);
-
-  schule2.rate(speed);
-  schule2.pan(pan);
-  delay.process(schule2, .30, .7, 2300);
-
-  schule3.rate(speed);
-  schule3.pan(pan);
-  delay.process(schule3, .30, .7, 2300);
-
-  schule4.rate(speed);
-  schule4.pan(pan);
-  delay.process(schule4, .30, .7, 2300);
-
-  schwaebisch.rate(speed);
-  schwaebisch.pan(pan);
-  delay.process(schwaebisch, .30, .7, 2300);
-
-  schwanger.rate(speed);
-  schwanger.pan(pan);
-  delay.process(schwanger, .30, .7, 2300);
-
-  schwarz.rate(speed);
-  schwarz.pan(pan);
-  delay.process(schwarz, .30, .7, 2300);
-
-  serioes.rate(speed);
-  serioes.pan(pan);
-  delay.process(serioes, .30, .7, 2300);
-
-  skorpion.rate(speed);
-  skorpion.pan(pan);
-  delay.process(skorpion, .30, .7, 2300);
-
-  sport.rate(speed);
-  sport.pan(pan);
-  delay.process(sport, .30, .7, 2300);
-
-  sportverein.rate(speed);
-  sportverein.pan(pan);
-  delay.process(sportverein, .30, .7, 2300);
-
-  staedtisch.rate(speed);
-  staedtisch.pan(pan);
-  delay.process(staedtisch, .30, .7, 2300);
-
-  star.rate(speed);
-  star.pan(pan);
-  delay.process(star, .30, .7, 2300);
-
-  steinbock.rate(speed);
-  steinbock.pan(pan);
-  delay.process(steinbock, .30, .7, 2300);
-
-  steuer.rate(speed);
-  steuer.pan(pan);
-  delay.process(steuer, .30, .7, 2300);
-
-  stier.rate(speed);
-  stier.pan(pan);
-  delay.process(stier, .30, .7, 2300);
-
-  straftaeter.rate(speed);
-  straftaeter.pan(pan);
-  delay.process(straftaeter, .30, .7, 2300);
-
-  sued.rate(speed);
-  sued.pan(pan);
-  delay.process(sued, .30, .7, 2300);
-
-  tattoo.rate(speed);
-  tattoo.pan(pan);
-  delay.process(tattoo, .30, .7, 2300);
-
-  tierlieb.rate(speed);
-  tierlieb.pan(pan);
-  delay.process(tierlieb, .30, .7, 2300);
-
-  trainiert.rate(speed);
-  trainiert.pan(pan);
-  delay.process(trainiert, .30, .7, 2300);
-
-  trans.rate(speed);
-  trans.pan(pan);
-  delay.process(trans, .30, .7, 2300);
-
-  twitter.rate(speed);
-  twitter.pan(pan);
-  delay.process(twitter, .30, .7, 2300);
-
-  uebergewicht.rate(speed);
-  uebergewicht.pan(pan);
-  delay.process(uebergewicht, .30, .7, 2300);
-
-  unten.rate(speed);
-  unten.pan(pan);
-  delay.process(unten, .30, .7, 2300);
-
-  untergewicht.rate(speed);
-  untergewicht.pan(pan);
-  delay.process(untergewicht, .30, .7, 2300);
-
-  veganer.rate(speed);
-  veganer.pan(pan);
-  delay.process(veganer, .30, .7, 2300);
-
-  vegetarisch.rate(speed);
-  vegetarisch.pan(pan);
-  delay.process(vegetarisch, .30, .7, 2300);
-
-  verbindung.rate(speed);
-  verbindung.pan(pan);
-  delay.process(verbindung, .30, .7, 2300);
-
-  verheiratet.rate(speed);
-  verheiratet.pan(pan);
-  delay.process(verheiratet, .30, .7, 2300);
-
-  vermieter.rate(speed);
-  vermieter.pan(pan);
-  delay.process(vermieter, .30, .7, 2300);
-
-  verwitwet.rate(speed);
-  verwitwet.pan(pan);
-  delay.process(verwitwet, .30, .7, 2300);
-
-  vielflieger.rate(speed);
-  vielflieger.pan(pan);
-  delay.process(vielflieger, .30, .7, 2300);
-
-  volksmusik.rate(speed);
-  volksmusik.pan(pan);
-  delay.process(volksmusik, .30, .7, 2300);
-
-  waage.rate(speed);
-  waage.pan(pan);
-  delay.process(waage, .30, .7, 2300);
-
-  waffe.rate(speed);
-  waffe.pan(pan);
-  delay.process(waffe, .30, .7, 2300);
-
-  waisenkind.rate(speed);
-  waisenkind.pan(pan);
-  delay.process(waisenkind, .30, .7, 2300);
-
-  wassermann.rate(speed);
-  wassermann.pan(pan);
-  delay.process(wassermann, .30, .7, 2300);
-
-  weiss.rate(speed);
-  weiss.pan(pan);
-  delay.process(weiss, .30, .7, 2300);
-
-  widder.rate(speed);
-  widder.pan(pan);
-  delay.process(widder, .30, .7, 2300);
-
-  windows.rate(speed);
-  windows.pan(pan);
-  delay.process(windows, .30, .7, 2300);
-
-  zivi.rate(speed);
-  zivi.pan(pan);
-  delay.process(zivi, .30, .7, 2300);
-
-  zugfahrer.rate(speed);
-  zugfahrer.pan(pan);
-  delay.process(zugfahrer, .30, .7, 2300);
-
-  zwillinge.rate(speed);
-  zwillinge.pan(pan);
-  delay.process(zwillinge, .30, .7, 2300);
-
-  adidas.rate(speed);
-  adidas.pan(pan);
-  delay.process(adidas, .30, .7, 2300);
-
-  asex.rate(speed);
-  asex.pan(pan);
-  delay.process(asex, .30, .7, 2300);
-
-  ausbildung.rate(speed);
-  ausbildung.pan(pan);
-  delay.process(ausbildung, .30, .7, 2300);
-
-  bisex.rate(speed);
-  bisex.pan(pan);
-  delay.process(bisex, .30, .7, 2300);
-
-  fokus.rate(speed);
-  fokus.pan(pan);
-  delay.process(fokus, .30, .7, 2300);
-
-  freundlich.rate(speed);
-  freundlich.pan(pan);
-  delay.process(freundlich, .30, .7, 2300);
-
-  gesund.rate(speed);
-  gesund.pan(pan);
-  delay.process(gesund, .30, .7, 2300);
-
-  glatze.rate(speed);
-  glatze.pan(pan);
-  delay.process(glatze, .30, .7, 2300);
-
-  ledig.rate(speed);
-  ledig.pan(pan);
-  delay.process(ledig, .30, .7, 2300);
-
-  nike.rate(speed);
-  nike.pan(pan);
-  delay.process(nike, .30, .7, 2300);
-
-  op.rate(speed);
-  op.pan(pan);
-  delay.process(op, .30, .7, 2300);
-
-  puma.rate(speed);
-  puma.pan(pan);
-  delay.process(puma, .30, .7, 2300);
-
-  redbull.rate(speed);
-  redbull.pan(pan);
-  delay.process(redbull, .30, .7, 2300);
-
-  westdeutsch.rate(speed);
-  westdeutsch.pan(pan);
-  delay.process(westdeutsch, .30, .7, 2300);
-
-  delay.amp(delayAmp);
-  volume = constrain(vol, 0, 1);
-  masterVolume(volume);
+  afrika.rate(speed); afrika.pan(pan); delay.process(afrika, .30, .7, 2300);
+  akademiker.rate(speed); akademiker.pan(pan); delay.process(akademiker, .30, .7, 2300);
+  akademikerkind.rate(speed); akademikerkind.pan(pan); delay.process(akademikerkind, .30, .7, 2300);
+  alkoholiker.rate(speed); alkoholiker.pan(pan); delay.process(alkoholiker, .30, .7, 2300);
+  alleinerziehend.rate(speed); alleinerziehend.pan(pan); delay.process(alleinerziehend, .30, .7, 2300);
+  allergiker.rate(speed); allergiker.pan(pan);  delay.process(allergiker, .30, .7, 2300);
+  alt.rate(speed); alt.pan(pan);  delay.process(alt, .30, .7, 2300);
+  alternativ.rate(speed); alternativ.pan(pan); delay.process(alternativ, .30, .7, 2300);
+  angestellte.rate(speed); angestellte.pan(pan); delay.process(angestellte, .30, .7, 2300);
+  antark.rate(speed); antark.pan(pan); delay.process(antark, .30, .7, 2300);
+  antifa.rate(speed); antifa.pan(pan); delay.process(antifa, .30, .7, 2300);
+  arbeiterkind.rate(speed); arbeiterkind.pan(pan); delay.process(arbeiterkind, .30, .7, 2300);
+  arbeitskleidung.rate(speed); arbeitskleidung.pan(pan); delay.process(arbeitskleidung, .30, .7, 2300);
+  arbeitslos.rate(speed); arbeitslos.pan(pan); delay.process(arbeitslos, .30, .7, 2300);
+  asien.rate(speed); asien.pan(pan); delay.process(asien, .30, .7, 2300);
+  atheist.rate(speed); atheist.pan(pan); delay.process(atheist, .30, .7, 2300);
+  aufmerksam.rate(speed); aufmerksam.pan(pan); delay.process(aufmerksam, .30, .7, 2300);
+  augenblau.rate(speed); augenblau.pan(pan); delay.process(augenblau, .30, .7, 2300);
+  augenbraun.rate(speed); augenbraun.pan(pan); delay.process(augenbraun, .30, .7, 2300);
+  augengruen.rate(speed); augengruen.pan(pan); delay.process(augengruen, .30, .7, 2300);
+  augenhaselnussbraun.rate(speed); augenhaselnussbraun.pan(pan); delay.process(augenhaselnussbraun, .30, .7, 2300);
+  augenschwarz.rate(speed); augenschwarz.pan(pan); delay.process(augenschwarz, .30, .7, 2300);
+  ausgemuster.rate(speed); ausgemuster.pan(pan); delay.process(ausgemuster, .30, .7, 2300);
+  austra.rate(speed); austra.pan(pan); delay.process(austra, .30, .7, 2300);
+  autofahrer.rate(speed); autofahrer.pan(pan); delay.process(autofahrer, .30, .7, 2300);
+  bahai.rate(speed); bahai.pan(pan); delay.process(bahai, .30, .7, 2300);
+  bauernkind.rate(speed); bauernkind.pan(pan); delay.process(bauernkind, .30, .7, 2300);
+  bayerisch.rate(speed); bayerisch.pan(pan); delay.process(bayerisch, .30, .7, 2300);
+  beamtenkind.rate(speed);  beamtenkind.pan(pan); delay.process(beamtenkind, .30, .7, 2300);
+  berlinerisch.rate(speed); berlinerisch.pan(pan);  delay.process(berlinerisch, .30, .7, 2300);
+  besorgt.rate(speed);  besorgt.pan(pan); delay.process(besorgt, .30, .7, 2300);
+  bmw.rate(speed); bmw.pan(pan); delay.process(bmw, .30, .7, 2300);
+  buddhist.rate(speed); buddhist.pan(pan); delay.process(buddhist, .30, .7, 2300);
+  buecherwurm.rate(speed); buecherwurm.pan(pan); delay.process(buecherwurm, .30, .7, 2300);
+  buero.rate(speed); buero.pan(pan); delay.process(buero, .30, .7, 2300);
+  bundeswehr.rate(speed); bundeswehr.pan(pan);  delay.process(bundeswehr, .30, .7, 2300);
+  bus.rate(speed); bus.pan(pan); delay.process(bus, .30, .7, 2300);
+  christ.rate(speed); christ.pan(pan); delay.process(christ, .30, .7, 2300);
+  chronischkrank.rate(speed); chronischkrank.pan(pan); delay.process(chronischkrank, .30, .7, 2300);
+  classic.rate(speed); classic.pan(pan); delay.process(classic, .30, .7, 2300);
+  club.rate(speed); club.pan(pan); delay.process(club, .30, .7, 2300);
+  doerflich.rate(speed); doerflich.pan(pan); delay.process(doerflich, .30, .7, 2300);
+  drogenabhaengig.rate(speed); drogenabhaengig.pan(pan); delay.process(drogenabhaengig, .30, .7, 2300);
+  einzelkind.rate(speed); einzelkind.pan(pan); delay.process(einzelkind, .30, .7, 2300);
+  enthusiastisch.rate(speed); enthusiastisch.pan(pan); delay.process(enthusiastisch, .30, .7, 2300);
+  eso.rate(speed); eso.pan(pan); delay.process(eso, .30, .7, 2300);
+  euro.rate(speed); euro.pan(pan); delay.process(euro, .30, .7, 2300);
+  experimental.rate(speed); experimental.pan(pan); delay.process(experimental, .30, .7, 2300);
+  facebook.rate(speed); facebook.pan(pan); delay.process(facebook, .30, .7, 2300);
+  fleischfresser.rate(speed); fleischfresser.pan(pan); delay.process(fleischfresser, .30, .7, 2300);
+  frau.rate(speed); frau.pan(pan); delay.process(frau, .30, .7, 2300);
+  freiberufler.rate(speed); freiberufler.pan(pan); delay.process(freiberufler, .30, .7, 2300);
+  fruehaufsteher.rate(speed); fruehaufsteher.pan(pan); delay.process(fruehaufsteher, .30, .7, 2300);
+  fussgaenger.rate(speed); fussgaenger.pan(pan); delay.process(fussgaenger, .30, .7, 2300);
+  gamer.rate(speed); gamer.pan(pan); delay.process(gamer, .30, .7, 2300);
+  gang.rate(speed); gang.pan(pan); delay.process(gang, .30, .7, 2300);
+  geistigbehindert.rate(speed); geistigbehindert.pan(pan); delay.process(geistigbehindert, .30, .7, 2300);
+  gelb.rate(speed); gelb.pan(pan); delay.process(gelb, .30, .7, 2300);
+  geschaeftsfuehrer.rate(speed); geschaeftsfuehrer.pan(pan); delay.process(geschaeftsfuehrer, .30, .7, 2300);
+  geschieden.rate(speed); geschieden.pan(pan); delay.process(geschieden, .30, .7, 2300);
+  geschwisterkind.rate(speed); geschwisterkind.pan(pan); delay.process(geschwisterkind, .30, .7, 2300);
+  gruen.rate(speed); gruen.pan(pan); delay.process(gruen, .30, .7, 2300);
+  hessisch.rate(speed); hessisch.pan(pan); delay.process(hessisch, .30, .7, 2300);
+  hetero.rate(speed); hetero.pan(pan); delay.process(hetero, .30, .7, 2300);
+  hindu.rate(speed); hindu.pan(pan); delay.process(hindu, .30, .7, 2300);
+  homo.rate(speed); homo.pan(pan); delay.process(homo, .30, .7, 2300);
+  instagram.rate(speed); instagram.pan(pan); delay.process(instagram, .30, .7, 2300);
+  jazz.rate(speed); jazz.pan(pan); delay.process(jazz, .30, .7, 2300);
+  jude.rate(speed); jude.pan(pan); delay.process(jude, .30, .7, 2300);
+  jung.rate(speed); jung.pan(pan); delay.process(jung, .30, .7, 2300);
+  jungfrau.rate(speed); jungfrau.pan(pan); delay.process(jungfrau, .30, .7, 2300);
+  kasse.rate(speed); kasse.pan(pan); delay.process(kasse, .30, .7, 2300);
+  koelsch.rate(speed); koelsch.pan(pan); delay.process(koelsch, .30, .7, 2300);
+  koerperlichbehindert.rate(speed); koerperlichbehindert.pan(pan); delay.process(koerperlichbehindert, .30, .7, 2300);
+  krank.rate(speed); krank.pan(pan); delay.process(krank, .30, .7, 2300);
+  kreativ.rate(speed); kreativ.pan(pan); delay.process(kreativ, .30, .7, 2300);
+  krebs.rate(speed); krebs.pan(pan); delay.process(krebs, .30, .7, 2300);
+  kurzehaare.rate(speed); kurzehaare.pan(pan); delay.process(kurzehaare, .30, .7, 2300);
+  langehaare.rate(speed); langehaare.pan(pan); delay.process(langehaare, .30, .7, 2300);
+  langschlaefer.rate(speed); langschlaefer.pan(pan); delay.process(langschlaefer, .30, .7, 2300);
+  latin.rate(speed); latin.pan(pan); delay.process(latin, .30, .7, 2300);
+  liberal.rate(speed); liberal.pan(pan); delay.process(liberal, .30, .7, 2300);
+  linux.rate(speed); linux.pan(pan); delay.process(linux, .30, .7, 2300);
+  loewe.rate(speed); loewe.pan(pan); delay.process(loewe, .30, .7, 2300);
+  mac.rate(speed); mac.pan(pan); delay.process(mac, .30, .7, 2300);
+  mann.rate(speed); mann.pan(pan); delay.process(mann, .30, .7, 2300);
+  meister.rate(speed); meister.pan(pan); delay.process(meister, .30, .7, 2300);
+  mercedes.rate(speed); mercedes.pan(pan); delay.process(mercedes, .30, .7, 2300);
+  mieter.rate(speed); mieter.pan(pan); delay.process(mieter, .30, .7, 2300);
+  mitte.rate(speed); mitte.pan(pan); delay.process(mitte, .30, .7, 2300);
+  mittleresAlter.rate(speed); mittleresAlter.pan(pan); delay.process(mittleresAlter, .30, .7, 2300);
+  modebewusst.rate(speed); modebewusst.pan(pan); delay.process(modebewusst, .30, .7, 2300);
+  muell.rate(speed); muell.pan(pan); delay.process(muell, .30, .7, 2300);
+  muslim.rate(speed); muslim.pan(pan); delay.process(muslim, .30, .7, 2300);
+  national.rate(speed); national.pan(pan); delay.process(national, .30, .7, 2300);
+  nichtversichert.rate(speed); nichtversichert.pan(pan); delay.process(nichtversichert, .30, .7, 2300);
+  nord.rate(speed); nord.pan(pan); delay.process(nord, .30, .7, 2300);
+  ober.rate(speed); ober.pan(pan); delay.process(ober, .30, .7, 2300);
+  opel.rate(speed); opel.pan(pan); delay.process(opel, .30, .7, 2300);
+  ostdeutsch.rate(speed); ostdeutsch.pan(pan); delay.process(ostdeutsch, .30, .7, 2300);
+  pendler.rate(speed); pendler.pan(pan); delay.process(pendler, .30, .7, 2300);
+  politiker.rate(speed); politiker.pan(pan); delay.process(politiker, .30, .7, 2300);
+  pop.rate(speed); pop.pan(pan); delay.process(pop, .30, .7, 2300);
+  privat.rate(speed); privat.pan(pan); delay.process(privat, .30, .7, 2300);
+  promoviert.rate(speed); promoviert.pan(pan); delay.process(promoviert, .30, .7, 2300);
+  radfahrer.rate(speed); radfahrer.pan(pan); delay.process(radfahrer, .30, .7, 2300);
+  raucher.rate(speed); raucher.pan(pan); delay.process(raucher, .30, .7, 2300);
+  rave.rate(speed); rave.pan(pan); delay.process(rave, .30, .7, 2300);
+  rock.rate(speed); rock.pan(pan); delay.process(rock, .30, .7, 2300);
+  rot.rate(speed); rot.pan(pan); delay.process(rot, .30, .7, 2300);
+  rtl.rate(speed); rtl.pan(pan); delay.process(rtl, .30, .7, 2300);
+  saechsisch.rate(speed); saechsisch.pan(pan); delay.process(saechsisch, .30, .7, 2300);
+  scheidungskind.rate(speed); scheidungskind.pan(pan); delay.process(scheidungskind, .30, .7, 2300);
+  schuetze.rate(speed); schuetze.pan(pan); delay.process(schuetze, .30, .7, 2300);
+  schule1.rate(speed); schule1.pan(pan); delay.process(schule1, .30, .7, 2300);
+  schule2.rate(speed); schule2.pan(pan); delay.process(schule2, .30, .7, 2300);
+  schule3.rate(speed); schule3.pan(pan); delay.process(schule3, .30, .7, 2300);
+  schule4.rate(speed); schule4.pan(pan); delay.process(schule4, .30, .7, 2300);
+  schwaebisch.rate(speed); schwaebisch.pan(pan); delay.process(schwaebisch, .30, .7, 2300);
+  schwanger.rate(speed); schwanger.pan(pan); delay.process(schwanger, .30, .7, 2300);
+  schwarz.rate(speed); schwarz.pan(pan); delay.process(schwarz, .30, .7, 2300);
+  serioes.rate(speed); serioes.pan(pan); delay.process(serioes, .30, .7, 2300);
+  skorpion.rate(speed); skorpion.pan(pan); delay.process(skorpion, .30, .7, 2300);
+  sport.rate(speed); sport.pan(pan); delay.process(sport, .30, .7, 2300);
+  sportverein.rate(speed); sportverein.pan(pan); delay.process(sportverein, .30, .7, 2300);
+  staedtisch.rate(speed); staedtisch.pan(pan); delay.process(staedtisch, .30, .7, 2300);
+  star.rate(speed); star.pan(pan); delay.process(star, .30, .7, 2300);
+  steinbock.rate(speed); steinbock.pan(pan); delay.process(steinbock, .30, .7, 2300);
+  steuer.rate(speed); steuer.pan(pan); delay.process(steuer, .30, .7, 2300);
+  stier.rate(speed); stier.pan(pan); delay.process(stier, .30, .7, 2300);
+  straftaeter.rate(speed); straftaeter.pan(pan); delay.process(straftaeter, .30, .7, 2300);
+  sued.rate(speed); sued.pan(pan); delay.process(sued, .30, .7, 2300);
+  tattoo.rate(speed); tattoo.pan(pan); delay.process(tattoo, .30, .7, 2300);
+  tierlieb.rate(speed); tierlieb.pan(pan); delay.process(tierlieb, .30, .7, 2300);
+  trainiert.rate(speed); trainiert.pan(pan); delay.process(trainiert, .30, .7, 2300);
+  trans.rate(speed); trans.pan(pan); delay.process(trans, .30, .7, 2300);
+  twitter.rate(speed); twitter.pan(pan); delay.process(twitter, .30, .7, 2300);
+  uebergewicht.rate(speed); uebergewicht.pan(pan); delay.process(uebergewicht, .30, .7, 2300);
+  unten.rate(speed); unten.pan(pan); delay.process(unten, .30, .7, 2300);
+  untergewicht.rate(speed); untergewicht.pan(pan); delay.process(untergewicht, .30, .7, 2300);
+  veganer.rate(speed); veganer.pan(pan); delay.process(veganer, .30, .7, 2300);
+  vegetarisch.rate(speed); vegetarisch.pan(pan); delay.process(vegetarisch, .30, .7, 2300);
+  verbindung.rate(speed); verbindung.pan(pan); delay.process(verbindung, .30, .7, 2300);
+  verheiratet.rate(speed); verheiratet.pan(pan); delay.process(verheiratet, .30, .7, 2300);
+  vermieter.rate(speed); vermieter.pan(pan); delay.process(vermieter, .30, .7, 2300);
+  verwitwet.rate(speed); verwitwet.pan(pan); delay.process(verwitwet, .30, .7, 2300);
+  vielflieger.rate(speed); vielflieger.pan(pan); delay.process(vielflieger, .30, .7, 2300);
+  volksmusik.rate(speed); volksmusik.pan(pan); delay.process(volksmusik, .30, .7, 2300);
+  waage.rate(speed); waage.pan(pan); delay.process(waage, .30, .7, 2300);
+  waffe.rate(speed); waffe.pan(pan); delay.process(waffe, .30, .7, 2300);
+  waisenkind.rate(speed); waisenkind.pan(pan); delay.process(waisenkind, .30, .7, 2300);
+  wassermann.rate(speed); wassermann.pan(pan); delay.process(wassermann, .30, .7, 2300);
+  weiss.rate(speed); weiss.pan(pan); delay.process(weiss, .30, .7, 2300);
+  widder.rate(speed); widder.pan(pan); delay.process(widder, .30, .7, 2300);
+  windows.rate(speed); windows.pan(pan); delay.process(windows, .30, .7, 2300);
+  zivi.rate(speed); zivi.pan(pan); delay.process(zivi, .30, .7, 2300);
+  zugfahrer.rate(speed); zugfahrer.pan(pan); delay.process(zugfahrer, .30, .7, 2300);
+  zwillinge.rate(speed); zwillinge.pan(pan); delay.process(zwillinge, .30, .7, 2300);
+  adidas.rate(speed); adidas.pan(pan); delay.process(adidas, .30, .7, 2300);
+  asex.rate(speed); asex.pan(pan); delay.process(asex, .30, .7, 2300);
+  ausbildung.rate(speed); ausbildung.pan(pan); delay.process(ausbildung, .30, .7, 2300);
+  bisex.rate(speed); bisex.pan(pan); delay.process(bisex, .30, .7, 2300);
+  fokus.rate(speed); fokus.pan(pan); delay.process(fokus, .30, .7, 2300);
+  freundlich.rate(speed); freundlich.pan(pan); delay.process(freundlich, .30, .7, 2300);
+  gesund.rate(speed); gesund.pan(pan); delay.process(gesund, .30, .7, 2300);
+  glatze.rate(speed); glatze.pan(pan); delay.process(glatze, .30, .7, 2300);
+  ledig.rate(speed); ledig.pan(pan); delay.process(ledig, .30, .7, 2300);
+  nike.rate(speed); nike.pan(pan); delay.process(nike, .30, .7, 2300);
+  op.rate(speed); op.pan(pan); delay.process(op, .30, .7, 2300);
+  puma.rate(speed); puma.pan(pan); delay.process(puma, .30, .7, 2300);
+  redbull.rate(speed); redbull.pan(pan); delay.process(redbull, .30, .7, 2300);
+  westdeutsch.rate(speed); westdeutsch.pan(pan); delay.process(westdeutsch, .30, .7, 2300);
+
+  romantisch.rate(speed); romantisch.pan(pan); delay.process(romantisch, .30, .7, 2300);
+  sexy.rate(speed); sexy.pan(pan); delay.process(sexy, .30, .7, 2300);
+  skurril.rate(speed); skurril.pan(pan); delay.process(skurril, .30, .7, 2300);
+  stabil.rate(speed); stabil.pan(pan); delay.process(stabil, .30, .7, 2300);
+  zuverlaessig.rate(speed); zuverlaessig.pan(pan); delay.process(zuverlaessig, .30, .7, 2300);
+
+  delay.amp(delayAmp); volume = constrain(vol, 0, 1); masterVolume(volume);
 }
 
 /////////////////////////////////////////////////////////
@@ -1151,18 +659,15 @@ function draw() {
 function identityBubble() {
   var spectrum = fft.analyze();
   br = constrain(bubbleRotate, 0, 360);
-
   noStroke();
   translate((windowWidth/2)+(pan*300), windowHeight/2);
-//  var micLevel = mic.getLevel();
-//  ml = constrain(micLevel, 0, 360);
   rotate(br);
   fill(255);
   for (var i = 0; i < spectrum.length; i++){
-    var freq = fft.analyze();
-    var level = amplitude.getLevel();
+  //  var freq = fft.analyze();
+//    var level = amplitude.getLevel();
 //    var l = (micLevel + level)*50;
-var l = level*50;
+//    var l = level*50;
     a = constrain(bubbleAngle, 0, 720);
     bs = constrain(bubbleSpread, 0, 720);
     var angle = map(i, 0, spectrum.length, 750-a, a);
@@ -1176,13 +681,16 @@ var l = level*50;
     ie = constrain(i, 0, 150);
 
     noStroke();
-    e = constrain(farbeEins, 0, 255);
-    z = constrain(farbeZwei, 0, 255);
-    d = constrain(farbeDrei, 0, 255);
+    e = constrain(farbeEins, 0, 100);
+    z = constrain(farbeZwei, 0, 100);
+    d = constrain(farbeDrei, 0, 100);
     fill(ie+e,ie+z,ie+d);
-    ellipse(x, y, l+s+w, l+s+h);
+  //  ellipse(x, y, l+s+w, l+s+h);
+    ellipse(x, y, s+w, s+h);
+
   }
 }
+
 
 /////////////////////////////////////////////////////////
 ////////////////////////SOUNDS///////////////////////////
@@ -2915,5 +2423,56 @@ var l = level*50;
       document.getElementById("westdeutsch").style["color"] = 'white';
       document.getElementById("westdeutsch").style["background-color"] = 'transparent';
   } }
+
+  function sRomantisch() {
+    if (!romantisch.isPlaying()){
+      romantisch.loop();
+      document.getElementById("romantisch").style["color"] = 'black';
+      document.getElementById("romantisch").style["background-color"] = 'white';
+    } else { romantisch.stop();
+      document.getElementById("romantisch").style["color"] = 'white';
+      document.getElementById("romantisch").style["background-color"] = 'transparent';
+  } }
+
+  function sSexy() {
+    if (!sexy.isPlaying()){
+      sexy.loop();
+      document.getElementById("sexy").style["color"] = 'black';
+      document.getElementById("sexy").style["background-color"] = 'white';
+    } else { sexy.stop();
+      document.getElementById("sexy").style["color"] = 'white';
+      document.getElementById("sexy").style["background-color"] = 'transparent';
+  } }
+
+  function sSkurril() {
+    if (!skurril.isPlaying()){
+      skurril.loop();
+      document.getElementById("skurril").style["color"] = 'black';
+      document.getElementById("skurril").style["background-color"] = 'white';
+    } else { skurril.stop();
+      document.getElementById("skurril").style["color"] = 'white';
+      document.getElementById("skurril").style["background-color"] = 'transparent';
+  } }
+
+  function sStabil() {
+    if (!stabil.isPlaying()){
+      stabil.loop();
+      document.getElementById("stabil").style["color"] = 'black';
+      document.getElementById("stabil").style["background-color"] = 'white';
+    } else { stabil.stop();
+      document.getElementById("stabil").style["color"] = 'white';
+      document.getElementById("stabil").style["background-color"] = 'transparent';
+  } }
+
+  function sZuverlaessig() {
+    if (!zuverlaessig.isPlaying()){
+      zuverlaessig.loop();
+      document.getElementById("zuverlaessig").style["color"] = 'black';
+      document.getElementById("zuverlaessig").style["background-color"] = 'white';
+    } else { zuverlaessig.stop();
+      document.getElementById("zuverlaessig").style["color"] = 'white';
+      document.getElementById("zuverlaessig").style["background-color"] = 'transparent';
+  } }
+
 
 function windowResized() { resizeCanvas(windowWidth, windowHeight); }
