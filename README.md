@@ -6,7 +6,8 @@ Durch Fieldrecordings und Audioauszügen aus Dokumentation, wird über eine Webs
 
 
 https://zerstoyber.github.io/Idenitity/ <br>
-Achtung: Webseite könnte ihr Device verlangsamen! Firefox wird empfohlen!
+Achtung: Webseite könnte ihr Device verlangsamen! Web Audio Buffer verbraucht erheblichen Speicherplatz! 
+Firefox wird empfohlen!
 
 Jacob Stoy, 2019 | Studiengruppe Informationsdesign | Kunsthochschule Burg Giebichenstein Halle <br>
 Betreut durch Prof. Matthias Görlich und Peter Hermans
