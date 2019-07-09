@@ -15,18 +15,9 @@
   20%   {font-size: 0.4em; color: rgba(255,255,255,0.1); font-variation-settings: 'wght' 100;}
   50%   {font-size: 0.6em; color: rgba(255,255,255,0.9); font-variation-settings: 'wght' 100;}
   85%   {font-size: 0.8em; color: rgba(255,255,255,0.2); font-variation-settings: 'wght' 100;}
-  100%  {font-size: 4.6em; color: rgba(255,255,255,0.9); font-variation-settings: 'wght' 150;}
+  95%  {font-size: 4.6em; color: rgba(255,255,255,1); font-variation-settings: 'wght' 150;}
+  100%  {font-size: 2.6em; color: rgba(255,255,255,0.0); font-variation-settings: 'wght' 150;}
 }
-
-@keyframes loadingani {
-  0%    {transform: rotate(0deg);}
-  100%  {transform: rotate(360deg);}
-}
-
-
-
-
-
 
 
 
@@ -57,7 +48,7 @@ body a {
   text-align: center;
 
   animation-name: timer;
-  animation-duration: 450s;
+  animation-duration: 300s;
   animation-iteration-count: infinite;
   }
 }
@@ -225,7 +216,7 @@ p {
 .gx {
   font-variation-settings: 'wght' 100;
   animation-name: gxFont;
-  animation-duration: 10s;
+  animation-duration: 7s;
   animation-iteration-count: infinite;
 }
 
@@ -235,7 +226,7 @@ p {
 }
 
 .space {
-  margin: 100%;
+  margin: 10%;
 }
 
 .minispace {
@@ -292,18 +283,19 @@ p {
   margin-top: 10%;
 }
 
+.loadingh1 {
+  margin-bottom: 5%;
+}
+
 .loadinginfo {
   margin-top: 5%;
-  margin-bottom: 5%;
-
+  margin-bottom: 2%;
   text-align: left;
   font-size: 0.5em;
 }
 
 .loadingabstract {
-  margin-top: 5%;
-  margin-bottom: 5%;
-
+  margin-bottom: 2%;
   text-align: left;
   font-size: 0.75em;
 }
@@ -321,15 +313,4 @@ p {
 
 .curserInfo {
   cursor: help;
-}
-
-.loadingpic {
-  float: left;
-  margin-right: 20px;
-  max-width: 48px;
-  transform: rotate(20deg);
-  animation-name: loadingani;
-  animation-duration: 10s;
-  animation-iteration-count: 2;
-  animation-delay: 5s;
 }

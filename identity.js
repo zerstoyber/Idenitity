@@ -1,15 +1,13 @@
 p5.disableFriendlyErrors = true; // disables FES
 
 var canvas;
-//var mic;
+// var mic;
 var amplitude;
 var fft;
 var delay;
-//  var level;
-//let angle = 0;
 
 
-var afrika, akademiker, akademikerkind, alkoholiker, alleinerziehend, allergiker, alt, alternativ, angestellte, antark, antifa, arbeiterkind, arbeitskleidung, arbeitslos, asien, atheist, aufmerksam, augenblau, augenbraun, augengruen, augenhaselnussbraun, augenschwarz, ausgemuster, austra, autofahrer, bahai, bauernkind, bayerisch, beamtenkind, berlinerisch, besorgt, bmw, buddhist, buecherwurm, buero, bundeswehr, bus, christ, chronischkrank, classic, club, doerflich, drogenabhaengig, einzelkind, enthusiastisch, eso, euro, experimental, facebook, fleischfresser, frau, freiberufler, fruehaufsteher, fussgaenger, gamer, gang, geistigbehindert, gelb, geschaeftsfuehrer, geschieden, geschwisterkind, gruen, hessisch, hetero, hindu, homo, instagram, jazz, jude, jung, jungfrau, kasse, koelsch, koerperlichbehindert, krank, kreativ, krebs, kurzehaare, langehaare, langschlaefer, latin, liberal, linux, loewe, mac, mann, meister, mercedes, mieter, mitte, mittleresAlter, modebewusst, muell, muslim, national, nichtversichert, nord, ober, opel, ostdeutsch, pendler, politiker, pop, privat, promoviert, radfahrer, raucher, rave, rock, rot, rtl, saechsisch, scheidungskind, schuetze, schule1, schule2, schule3, schule4, schwaebisch, schwanger, schwarz, serioes, skorpion, sport, sportverein, staedtisch, star, steinbock, steuer, stier, straftaeter, sued, tattoo, tierlieb, trainiert, trans, twitter, uebergewicht, unten, untergewicht, veganer, vegetarisch, verbindung, verheiratet, vermieter, verwitwet, vielflieger, volksmusik, waage, waffe, waisenkind, wassermann, weiss, widder, windows, zivi, zugfahrer, zwillinge, adidas, asex, ausbildung, bisex, fokus, freundlich, gesund, glatze, ledig, nike, op, puma, redbull, westdeutsch, romantisch, sexy, skurril, stabil, zuverlaessig;
+var afrika, akademiker, akademikerkind, alkoholiker, alleinerziehend, allergiker, alt, alternativ, angestellte, antark, antifa, arbeiterkind, arbeitskleidung, arbeitslos, asien, atheist, aufmerksam, augenblau, augenbraun, augengruen, augenhaselnussbraun, augenschwarz, ausgemuster, austra, autofahrer, bahai, bauernkind, bayerisch, beamtenkind, berlinerisch, besorgt, bmw, buddhist, buecherwurm, buero, bundeswehr, bus, christ, chronischkrank, classic, club, doerflich, drogenabhaengig, einzelkind, enthusiastisch, eso, euro, experimental, facebook, fleischfresser, frau, freiberufler, fruehaufsteher, fussgaenger, gamer, gang, geistigbehindert, gelb, geschaeftsfuehrer, geschieden, geschwisterkind, gruen, hessisch, hetero, hindu, homo, instagram, jazz, jude, jung, jungfrau, kasse, koelsch, koerperlichbehindert, krank, kreativ, krebs, kurzehaare, langehaare, langschlaefer, latin, liberal, linux, loewe, mac, mann, meister, mercedes, mieter, mitte, mittleresAlter, modebewusst, muell, muslim, national, nichtversichert, nord, ober, opel, ostdeutsch, pendler, politiker, pops, privat, promoviert, radfahrer, raucher, rave, rock, rot, rtl, saechsisch, scheidungskind, schuetze, schule1, schule2, schule3, schule4, schwaebisch, schwanger, schwarz, serioes, skorpion, sport, sportverein, staedtisch, star, steinbock, steuer, stier, straftaeter, sued, tattoo, tierlieb, trainiert, trans, twitter, uebergewicht, unten, untergewicht, veganer, vegetarisch, verbindung, verheiratet, vermieter, verwitwet, vielflieger, volksmusik, waage, waffe, waisenkind, wassermann, weiss, widder, windows, zivi, zugfahrer, zwillinge, adidas, asex, ausbildung, bisex, fokus, freundlich, gesund, glatze, ledig, nike, op, puma, redbull, westdeutsch, romantisch, sexy, skurril, stabil, zuverlaessig;
 
 /////////////////////////////////////////////////////////
 ////////////////////////SLIDER///////////////////////////
@@ -23,14 +21,11 @@ noUiSlider.create(sliderFarbeEins, {
   step: 1,
   range: {
     min: [0],
-    max: [200]
+    max: [130]
   }
 });
 
-sliderFarbeEins.noUiSlider.on('update', function( value ){
-//  console.log("FARBE EINS SLIDER: " + value);
-  farbeEins = value;
-});
+sliderFarbeEins.noUiSlider.on('update', function( value ){ farbeEins = value; });
 
 //FARBE ZWEI SLIDER
 var farbeZwei;
@@ -40,14 +35,11 @@ noUiSlider.create(sliderFarbeZwei, {
   step: 1,
   range: {
     min: [0],
-    max: [200]
+    max: [130]
   }
 });
 
-sliderFarbeZwei.noUiSlider.on('update', function( value ){
-//  console.log("FARBE ZWEI SLIDER: " + value);
-  farbeZwei = value;
-});
+sliderFarbeZwei.noUiSlider.on('update', function( value ){ farbeZwei = value; });
 
 //FARBE DREI SLIDER
 var farbeDrei;
@@ -57,14 +49,11 @@ noUiSlider.create(sliderFarbeDrei, {
   step: 1,
   range: {
     min: [0],
-    max: [200]
+    max: [130]
   }
 });
 
-sliderFarbeDrei.noUiSlider.on('update', function( value ){
-//  console.log("FARBE DREI SLIDER: " + value);
-  farbeDrei = value;
-});
+sliderFarbeDrei.noUiSlider.on('update', function( value ){ farbeDrei = value; });
 
 //SPEED SLIDER
 var speed;
@@ -78,10 +67,7 @@ noUiSlider.create(sliderSpeed, {
   }
 });
 
-sliderSpeed.noUiSlider.on('update', function( value ){
-//  console.log("SPEED SLIDER: " + value);
-  speed = value;
-});
+sliderSpeed.noUiSlider.on('update', function( value ){  speed = value; });
 
 //DELAY SLIDER
 var delayAmp;
@@ -95,9 +81,7 @@ noUiSlider.create(sliderDelayAmp, {
   }
 });
 
-sliderDelayAmp.noUiSlider.on('update', function( value ){
-//  console.log("DEALY AMP SLIDER: " + value);
-  delayAmp = value;
+sliderDelayAmp.noUiSlider.on('update', function( value ){ delayAmp = value;
 });
 
 //VOLUMEN
@@ -112,10 +96,7 @@ noUiSlider.create(sliderVol, {
   }
 });
 
-sliderVol.noUiSlider.on('update', function( value ){
-//  console.log("VOLUMEN SLIDER: " + value);
-  vol = value;
-});
+sliderVol.noUiSlider.on('update', function( value ){  vol = value; });
 
 //PAN
 var pan;
@@ -129,10 +110,7 @@ noUiSlider.create(sliderPan, {
   }
 });
 
-sliderPan.noUiSlider.on('update', function( value ){
-//  console.log("PAN SLIDER: " + value);
-  pan = value;
-});
+sliderPan.noUiSlider.on('update', function( value ){ pan = value; });
 
 //BUBBLE SIZE
 var bubbleSize;
@@ -146,10 +124,7 @@ noUiSlider.create(sliderBubbleSize, {
   }
 });
 
-sliderBubbleSize.noUiSlider.on('update', function( value ){
-//  console.log("BUBBLE SIZE: " + value);
-  bubbleSize = value;
-});
+sliderBubbleSize.noUiSlider.on('update', function( value ){ bubbleSize = value; });
 
 //BUBBLE ANGLE
 var bubbleAngle;
@@ -163,10 +138,7 @@ noUiSlider.create(sliderBubbleAngle, {
   }
 });
 
-sliderBubbleAngle.noUiSlider.on('update', function( value ){
-//  console.log("BUBBLE ANGLE: " + value);
-  bubbleAngle = value;
-});
+sliderBubbleAngle.noUiSlider.on('update', function( value ){ bubbleAngle = value; });
 
 //BUBBLE SPREAD
 var bubbleSpread;
@@ -180,10 +152,7 @@ noUiSlider.create(sliderBubbleSpread, {
   }
 });
 
-sliderBubbleSpread.noUiSlider.on('update', function( value ){
-//  console.log("BUBBLE SPREAD: " + value);
-  bubbleSpread = value;
-});
+sliderBubbleSpread.noUiSlider.on('update', function( value ){ bubbleSpread = value; });
 
 //BUBBLE ROTATE
 var bubbleRotate;
@@ -197,44 +166,35 @@ noUiSlider.create(sliderBubbleRotate, {
   }
 });
 
-sliderBubbleRotate.noUiSlider.on('update', function( value ){
-//  console.log("BUBBLE ROTATE: " + value);
-  bubbleRotate = value;
-});
+sliderBubbleRotate.noUiSlider.on('update', function( value ){ bubbleRotate = value; });
 
 //BUBBLE Height
 var bubbleHeight;
 var sliderBubbleHeight = document.getElementById('sliderBubbleHeight');
 noUiSlider.create(sliderBubbleHeight, {
-  start: [0],
+  start: [25],
   step: 1,
   range: {
     min: [0],
-    max: [400]
+    max: [50]
   }
 });
 
-sliderBubbleHeight.noUiSlider.on('update', function( value ){
-//  console.log("BUBBLE HEIGHT: " + value);
-  bubbleHeight = value;
-});
+sliderBubbleHeight.noUiSlider.on('update', function( value ){ bubbleHeight = value; });
 
 //BUBBLE Width
 var bubbleWidth;
 var sliderBubbleWidth = document.getElementById('sliderBubbleWidth');
 noUiSlider.create(sliderBubbleWidth, {
-  start: [0],
+  start: [25],
   step: 1,
   range: {
     min: [0],
-    max: [100]
+    max: [50]
   }
 });
 
-sliderBubbleWidth.noUiSlider.on('update', function( value ){
-//  console.log("BUBBLE WIDTH: " + value);
-  bubbleWidth = value;
-});
+sliderBubbleWidth.noUiSlider.on('update', function( value ){ bubbleWidth = value; });
 
 /////////////////////////////////////////////////////////
 ///////////////////////PRELOAD///////////////////////////
@@ -246,8 +206,6 @@ sliderBubbleWidth.noUiSlider.on('update', function( value ){
 //       sounds = Array(INDEX_TOTAL);
 
 function preload() {
-  soundFormats('mp3');
-
   // for (let i = 0; i < INDEX_TOTAL; ++i)
   // sounds[i] = loadSound(FOLDER + (i + INDEX_START) + EXT);
 
@@ -353,7 +311,7 @@ function preload() {
   ostdeutsch = loadSound('sounds/ostdeutsch.mp3');
   pendler = loadSound('sounds/pendler.mp3');
   politiker = loadSound('sounds/politiker.mp3');
-  pop = loadSound('sounds/pop.mp3');
+  pops = loadSound('sounds/pop.mp3');
   privat = loadSound('sounds/privat.mp3');
   promoviert = loadSound('sounds/promoviert.mp3');
   radfahrer = loadSound('sounds/radfahrer.mp3');
@@ -437,12 +395,12 @@ function preload() {
 /////////////////////////////////////////////////////////
 
 function setup(){
-//  amplitude = new p5.Amplitude(0.9);
-  //  var level = amplitude.getLevel();
+  amplitude = new p5.Amplitude();
+  amplitude.smooth(0.9);
   fft = new p5.FFT(0.9, 512);
   delay = new p5.Delay();
-  //  mic = new p5.AudioIn();
-  //  mic.start();
+  // mic = new p5.AudioIn();
+  // mic.start();
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style('z-index', '-3');
@@ -455,20 +413,20 @@ function setup(){
 
 function draw() {
 //  var micLevel = mic.getLevel()*100;
-//  var l = level*10;
-//  var h = hour();
-//  var m = minute();
-//  var s = second();
+  var level = amplitude.getLevel();
+  var l = level*100;
   e = constrain(farbeEins, 0, 200);
   z = constrain(farbeZwei, 0, 200);
   d = constrain(farbeDrei, 0, 200);
 
 //  micLevelSize = constrain(micLevel, 0, 200);
 //background(micLevelSize+e, micLevelSize+z, micLevelSize+d);
-//  blendMode(HARD_LIGHT);
   background(e, z, d);
-//  background(l, l, l);
+  fill(0,0,0,l)
+  rect(0,0,windowWidth,windowHeight);
   identityBubble();
+
+
 
   afrika.rate(speed); afrika.pan(pan); delay.process(afrika, .30, .7, 2300);
   akademiker.rate(speed); akademiker.pan(pan); delay.process(akademiker, .30, .7, 2300);
@@ -572,7 +530,7 @@ function draw() {
   ostdeutsch.rate(speed); ostdeutsch.pan(pan); delay.process(ostdeutsch, .30, .7, 2300);
   pendler.rate(speed); pendler.pan(pan); delay.process(pendler, .30, .7, 2300);
   politiker.rate(speed); politiker.pan(pan); delay.process(politiker, .30, .7, 2300);
-  pop.rate(speed); pop.pan(pan); delay.process(pop, .30, .7, 2300);
+  pops.rate(speed); pops.pan(pan); delay.process(pops, .30, .7, 2300);
   privat.rate(speed); privat.pan(pan); delay.process(privat, .30, .7, 2300);
   promoviert.rate(speed); promoviert.pan(pan); delay.process(promoviert, .30, .7, 2300);
   radfahrer.rate(speed); radfahrer.pan(pan); delay.process(radfahrer, .30, .7, 2300);
@@ -665,32 +623,34 @@ function identityBubble() {
   fill(255);
   for (var i = 0; i < spectrum.length; i++){
   //  var freq = fft.analyze();
-//    var level = amplitude.getLevel();
+    var level = amplitude.getLevel();
 //    var l = (micLevel + level)*50;
-//    var l = level*50;
+    var l = level*50;
     a = constrain(bubbleAngle, 0, 720);
     bs = constrain(bubbleSpread, 0, 720);
-    var angle = map(i, 0, spectrum.length, 750-a, a);
-    var amp = spectrum[i];
-    var r = map(amp, 0, bs/2, 100, 0);
-    var x = r * cos(angle);
-    var y = r * sin(angle);
     s = constrain(bubbleSize, 0, 500);
+
     h = constrain(bubbleHeight, 0, 400);
     w = constrain(bubbleWidth, 0, 400);
     ie = constrain(i, 0, 150);
+    var angle = map(i, 0, spectrum.length, 750-a, a);
+    var amp = spectrum[i];
+    var r = map(amp, 0, bs/2, bubbleSize*10, 0);
+    var x = r * cos(angle);
+    var y = r * sin(angle);
+
 
     noStroke();
     e = constrain(farbeEins, 0, 100);
     z = constrain(farbeZwei, 0, 100);
     d = constrain(farbeDrei, 0, 100);
     fill(ie+e,ie+z,ie+d);
-  //  ellipse(x, y, l+s+w, l+s+h);
-    ellipse(x, y, s+w, s+h);
+    ellipse(x, y, l+s+w-20, l+s+h-20);
+  //  ellipse(x, y, s+w, s+h);
+  //blendMode(ADD);
 
   }
 }
-
 
 /////////////////////////////////////////////////////////
 ////////////////////////SOUNDS///////////////////////////
@@ -1723,13 +1683,13 @@ function identityBubble() {
   } }
 
   function sPop() {
-    if (!pop.isPlaying()){
-      pop.loop();
-      document.getElementById("pop").style["color"] = 'black';
-      document.getElementById("pop").style["background-color"] = 'white';
-    } else { pop.stop();
-      document.getElementById("pop").style["color"] = 'white';
-      document.getElementById("pop").style["background-color"] = 'transparent';
+    if (!pops.isPlaying()){
+      pops.loop();
+      document.getElementById("pops").style["color"] = 'black';
+      document.getElementById("pops").style["background-color"] = 'white';
+    } else { pops.stop();
+      document.getElementById("pops").style["color"] = 'white';
+      document.getElementById("pops").style["background-color"] = 'transparent';
   } }
 
   function sPrivat() {
@@ -2476,3 +2436,17 @@ function identityBubble() {
 
 
 function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+
+// var ctx = new AudioContext(),
+//     scratchBuffer = ctx.createBuffer(1, 1, 22050);
+//
+// class WebAudioAdapter extends AudioAdapter {
+//     close() {
+//         if( this.__src ) {
+//             this.__src.onended = null;
+//             this.__src.disconnect(0);
+//             try { this.__src.buffer = scratchBuffer; } catch(e) {}
+//             this.__src = null;
+//         }
+//     }
+// }
