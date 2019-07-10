@@ -202,6 +202,22 @@ sliderBubbleWidth.noUiSlider.on('update', function( value ){ bubbleWidth = value
 /////////////////////////////////////////////////////////
 
 function preload() {
+
+}
+
+/////////////////////////////////////////////////////////
+////////////////////////SETUP////////////////////////////
+/////////////////////////////////////////////////////////
+
+function setup(){
+  amplitude = new p5.Amplitude();
+  amplitude.smooth(0.9);
+  fft = new p5.FFT(0.9, 512);
+  delay = new p5.Delay();
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.position(0, 0);
+  canvas.style('z-index', '-3');
+
   alkoholiker = loadSound('sounds/alkoholiker.mp3');
   alleinerziehend = loadSound('sounds/alleinerziehend.mp3');
   allergiker = loadSound('sounds/allergiker.mp3');
@@ -241,20 +257,6 @@ function preload() {
   zwillinge = loadSound('sounds/zwillinge.mp3');
   adidas = loadSound('sounds/adidas.mp3');
   gesund = loadSound('sounds/gesund.mp3');
-}
-
-/////////////////////////////////////////////////////////
-////////////////////////SETUP////////////////////////////
-/////////////////////////////////////////////////////////
-
-function setup(){
-  amplitude = new p5.Amplitude();
-  amplitude.smooth(0.9);
-  fft = new p5.FFT(0.9, 512);
-  delay = new p5.Delay();
-  canvas = createCanvas(windowWidth, windowHeight);
-  canvas.position(0, 0);
-  canvas.style('z-index', '-3');
 }
 
 /////////////////////////////////////////////////////////
