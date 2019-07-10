@@ -314,3 +314,7 @@ p {
 .curserInfo {
   cursor: help;
 }
+
+.cross {
+  -webkit-text-decoration-line: line-through; /* Safari */
+  text-decoration-line: line-through; }
